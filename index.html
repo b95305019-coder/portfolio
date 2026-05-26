@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃凱群 | 人事人員 HR Specialist 個人介紹</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cosmic: {
+                            50: '#F5F4F7',
+                            100: '#E2E0E6',
+                            200: '#C7C2D1',
+                            300: '#948CA3',
+                            800: '#2A253B',
+                            900: '#141124',
+                            950: '#0B0914', // 星空深底色
+                        },
+                        starlight: {
+                            gold: '#E6C280', // 皎潔月光金
+                            silver: '#D1CDD6', // 星光銀
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['PingFang TC', 'Heiti TC', 'Noto Sans TC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        /* 星空漸層背景 */
+        .starry-gradient {
+            background: linear-gradient(135deg, #0B0914 0%, #1A162E 50%, #141124 100%);
+        }
+        /* 編輯模式下的視覺引導樣式 (月光金虛線) */
+        .edit-active [contenteditable="true"] {
+            outline: none;
+            border-bottom: 1px dashed #E6C280;
+            background-color: rgba(42, 37, 59, 0.4);
+            padding-left: 4px;
+            padding-right: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .edit-active [contenteditable="true"]:focus {
+            background-color: rgba(42, 37, 59, 0.8);
+            border-bottom: 1px solid #E6C280;
+        }
+        /* 隱藏滾動條但保持功能 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-cosmic-950 text-cosmic-100 font-sans antialiased leading-relaxed pb-24 starry-gradient">
+
+    <!-- 控制面板：浮動編輯工具列 (星空暗色版) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col sm:flex-row gap-3 bg-cosmic-900/90 backdrop-blur-md p-3 rounded-2xl shadow-2xl border border-cosmic-800">
+        <button onclick="toggleEditMode()" id="edit-toggle-btn" class="px-4 py-2.5 bg-cosmic-800 text-white text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-cosmic-700 transition-all shadow-sm border border-cosmic-300/10">
+            <i data-lucide="edit-3" class="w-4 h-4 text-starlight-gold"></i>
+            <span id="edit-btn-text">啟動編輯模式</span>
+        </button>
+        <button onclick="exportHTML()" id="export-btn" class="px-4 py-2.5 bg-starlight-gold text-cosmic-950 text-xs sm:text-sm font-extrabold rounded-xl flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all shadow-sm">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>導出/下載最新網頁</span>
+        </button>
+        <button onclick="clearAllCache()" class="px-3 py-2.5 bg-red-950/40 text-red-400 text-xs sm:text-sm font-medium rounded-xl flex items-center justify-center gap-1.5 hover:bg-red-950/60 transition-all border border-red-900/30">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+            <span>重置</span>
+        </button>
+    </div>
+
+    <!-- 頂部提示條 (月光金配深底) -->
+    <div id="edit-banner" class="hidden bg-starlight-gold text-cosmic-950 py-2 px-4 text-center text-xs font-bold tracking-wider sticky top-0 z-50 shadow-md animate-pulse">
+        ⚡ 目前處於「編輯模式」！您可以直接點選畫面上任何文字進行修改，亦可拖曳、縮放您的頭像。
+    </div>
+
+    <!-- 導覽列 -->
+    <nav class="sticky top-0 z-40 bg-cosmic-950/80 backdrop-blur-md border-b border-cosmic-800">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span id="nav-logo" contenteditable="false" class="text-xl font-extrabold tracking-wider text-white">KAI-CHUN.</span>
+            <div class="flex space-x-6 text-sm font-medium text-cosmic-200">
+                <a href="#about" class="hover:text-starlight-gold transition-colors">關於我</a>
+                <a href="#skills" class="hover:text-starlight-gold transition-colors">核心技能</a>
+                <a href="#portfolio" class="hover:text-starlight-gold transition-colors">重要實績</a>
+                <a href="#contact" class="hover:text-starlight-gold transition-colors">聯絡方式</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄首頁區 (Hero Section)：預設使用星空山脈漸層與精緻微光 -->
+    <header id="hero-section" class="relative py-16 md:py-24 border-b border-cosmic-800 bg-cover bg-center overflow-hidden transition-all duration-300" 
+            style="background-image: linear-gradient(135deg, rgba(11, 9, 20, 0.95) 0%, rgba(26, 22, 46, 0.85) 100%);">
+        
+        <!-- 背景星光微粒裝飾 (CSS 模擬) -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute w-1 h-1 bg-white rounded-full top-1/4 left-1/3 animate-ping" style="animation-duration: 3s;"></div>
+            <div class="absolute w-1.5 h-1.5 bg-white rounded-full top-1/3 left-2/3 animate-ping" style="animation-duration: 4s;"></div>
+            <div class="absolute w-1 h-1 bg-white rounded-full top-2/3 left-1/4 animate-ping" style="animation-duration: 5s;"></div>
+        </div>
+
+        <!-- 背景上傳控制器 -->
+        <div class="absolute top-4 right-4 z-10 flex gap-2">
+            <label for="bg-upload" class="cursor-pointer bg-cosmic-900/95 hover:bg-cosmic-800 text-starlight-silver px-3 py-1.5 rounded-lg border border-cosmic-800 shadow-sm text-xs font-bold flex items-center gap-1.5 transition-all">
+                <i data-lucide="image" class="w-3.5 h-3.5 text-starlight-gold"></i>
+                <span>更換背景圖</span>
+                <input type="file" id="bg-upload" accept="image/*" class="hidden" onchange="uploadHeaderBg(event)">
+            </label>
+            <button onclick="resetHeaderBg()" id="reset-bg-btn" class="hidden bg-cosmic-900/95 hover:bg-red-950/40 text-red-400 px-2 py-1.5 rounded-lg border border-cosmic-800 shadow-sm text-xs font-bold flex items-center gap-1 transition-all">
+                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            </button>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+            
+            <!-- 互動式個人頭像拖曳與縮放區塊 -->
+            <div class="flex flex-col items-center gap-4 flex-shrink-0">
+                <div id="avatar-container" class="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-cosmic-800 shadow-2xl bg-cosmic-900 flex items-center justify-center cursor-move select-none">
+                    
+                    <!-- 實際的照片元素：套用 CSS Transform 動態定位 -->
+                    <img id="avatar-img" src="" alt="黃凱群" class="absolute max-w-none origin-center pointer-events-none hidden">
+                    
+                    <!-- 預設中性 SVG 剪影 -->
+                    <div id="avatar-placeholder" class="text-cosmic-300 flex flex-col items-center justify-center transition-all">
+                        <i data-lucide="user" class="w-16 h-16 text-cosmic-800"></i>
+                        <span class="text-[10px] text-starlight-gold mt-1 font-semibold bg-cosmic-950/80 px-2 py-0.5 rounded-full shadow-sm">點擊上傳照片</span>
+                    </div>
+                    
+                    <!-- 覆蓋提示層 (點擊更換照片) -->
+                    <label for="avatar-upload" class="absolute inset-0 bg-cosmic-950/60 flex flex-col items-center justify-center text-white opacity-0 hover:opacity-100 transition-opacity cursor-pointer z-20">
+                        <i data-lucide="camera" class="w-6 h-6 mb-1 text-starlight-gold"></i>
+                        <span class="text-xs font-semibold">更換個人照</span>
+                    </label>
+                    <input type="file" id="avatar-upload" accept="image/*" class="hidden" onchange="uploadAvatar(event)">
+                </div>
+
+                <!-- 縮放與旋轉控制面板 -->
+                <div id="avatar-control-panel" class="hidden w-40 md:w-48 bg-cosmic-900/90 backdrop-blur-sm px-3 py-2 rounded-xl border border-cosmic-800 shadow-lg space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] text-cosmic-200 font-bold flex items-center gap-1">
+                            <i data-lucide="move" class="w-3 h-3 text-starlight-gold"></i> 拖曳照片以對齊
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="zoom-out" class="w-3.5 h-3.5 text-cosmic-300"></i>
+                        <input type="range" id="avatar-scale" min="0.5" max="4" step="0.05" value="1" oninput="adjustAvatarTransform()" class="w-full accent-starlight-gold h-1 bg-cosmic-800 rounded-lg appearance-none cursor-pointer">
+                        <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-cosmic-300"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 主標題與定位 -->
+            <div class="text-center md:text-left">
+                <span id="hero-tag" contenteditable="false" class="inline-block px-3 py-1 bg-cosmic-800 text-starlight-gold text-xs font-semibold uppercase tracking-widest rounded-full mb-3 border border-starlight-gold/20">HR Specialist</span>
+                <h1 id="hero-title" contenteditable="false" class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">黃凱群 (Kai-Chun Huang)</h1>
+                <p id="hero-subtitle" contenteditable="false" class="text-lg md:text-xl font-semibold text-starlight-gold mb-4">
+                    以公職嚴謹與數據精神，驅動高效數位化招募考核的人事專業者
+                </p>
+                <p id="hero-desc" contenteditable="false" class="text-sm text-cosmic-200 max-w-lg mb-6 leading-relaxed">
+                    國立臺灣大學社會學系畢業，具備 10 年公務體系穩定資歷，兼具 6 年以上 40 人編制人事實務。靈活結合數位與 AI 應用工具，擅長跨部門協調與高彈性溝通，主動追求精準、零失誤的組織協同運作。
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                    <a href="#contact" class="px-5 py-2.5 bg-starlight-gold text-cosmic-950 rounded-lg text-sm font-bold shadow-md hover:bg-opacity-95 transition-all flex items-center gap-2">
+                        <i data-lucide="mail" class="w-4 h-4"></i> <span>與我聯絡</span>
+                    </a>
+                    <a href="#portfolio" class="px-5 py-2.5 bg-cosmic-900 text-white border border-cosmic-800 rounded-lg text-sm font-semibold hover:bg-cosmic-800 transition-all flex items-center gap-2">
+                        <i data-lucide="briefcase" class="w-4 h-4 text-starlight-gold"></i> <span>查看工作實績</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 關於我 (About Me) -->
+    <section id="about" class="py-16 max-w-4xl mx-auto px-6">
+        <div class="flex items-center gap-2 mb-8">
+            <i data-lucide="user" class="w-6 h-6 text-starlight-gold"></i>
+            <h2 id="about-heading" contenteditable="false" class="text-2xl font-bold tracking-wider text-white">關於我 | Professional Background</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+            <div class="md:col-span-2 space-y-4 text-cosmic-200">
+                <p id="about-p1" contenteditable="false">
+                    你好，我是凱群。畢業於<strong>國立臺灣大學社會學系</strong>，社會學的訓練培養了我敏銳的洞察力與深厚的跨背景溝通特質。
+                </p>
+                <p id="about-p2" contenteditable="false">
+                    在<strong>內政部移民署</strong>服務近十年的期間裡，我累積了長達 6 年的人事兼辦實務。曾主導 40 人單位的考核流程、端到端招募、雙班制差勤管理、以及年度教育訓練，並以<strong>「零退件、零補正、零錯誤」</strong>的嚴謹標準維持行政效能。
+                </p>
+                <p id="about-p3" contenteditable="false">
+                    此外，我亦曾跨足長照領域擔任居服員，在第一線獨立面對並圓滿協調各種高需求與失智高齡個案。這段經歷極大地鍛鍊了我面對高壓情境時的穩定度，以及溫暖且具韌性的溝通品質。
+                </p>
+                <p id="about-quote" contenteditable="false" class="font-medium text-white border-l-4 border-starlight-gold pl-3 py-1 bg-cosmic-800/30">
+                    「公部門的嚴謹細緻，結合私部門的敏捷彈性，是我能立即為團隊帶來的高價值貢獻。」
+                </p>
+            </div>
+            
+            <!-- 個人小資訊卡 (霧氣磨砂玻璃樣式) -->
+            <div class="bg-cosmic-900/50 backdrop-blur-md p-6 rounded-xl border border-cosmic-800 shadow-lg space-y-4">
+                <h3 id="info-title" contenteditable="false" class="font-bold text-white border-b border-cosmic-800 pb-2 flex items-center gap-1.5">
+                    <i data-lucide="info" class="w-4 h-4 text-starlight-gold"></i> 基本資訊
+                </h3>
+                <ul class="space-y-3 text-sm text-cosmic-200">
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="graduation-cap" class="w-4 h-4 text-starlight-gold"></i>
+                        <span id="info-edu" contenteditable="false">台灣大學 社會學系學士</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-starlight-gold"></i>
+                        <span id="info-loc" contenteditable="false">新北市鶯歌區 / 可通勤桃園</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="award" class="w-4 h-4 text-starlight-gold"></i>
+                        <span id="info-exam" contenteditable="false">持續備考 TOEIC & 就服乙級</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-4 h-4 text-starlight-gold"></i>
+                        <span id="info-age" contenteditable="false">民國 77 年生 / 37 歲</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技能 (Skills) -->
+    <section id="skills" class="py-16 bg-cosmic-900/30 border-y border-cosmic-800/80">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex items-center gap-2 mb-10">
+                <i data-lucide="sliders" class="w-6 h-6 text-starlight-gold"></i>
+                <h2 id="skills-heading" contenteditable="false" class="text-2xl font-bold tracking-wider text-white">核心技能 | Core Expertise</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- 技能 1 -->
+                <div class="bg-cosmic-900/40 backdrop-blur-md p-6 rounded-xl border border-cosmic-800/60 shadow-lg hover:border-starlight-gold/30 transition-all">
+                    <div class="w-10 h-10 bg-cosmic-800 rounded-lg flex items-center justify-center mb-4 text-starlight-gold">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 id="skill1-title" contenteditable="false" class="text-lg font-bold text-white mb-2">人事實務管理</h3>
+                    <p id="skill1-desc" contenteditable="false" class="text-sm text-cosmic-200 leading-relaxed">
+                        熟稔招募端到端流程、雙班制排班與差勤福利結算。曾主導 40 人考核比例框架，具備極高流程掌握度與合規嚴謹度。
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <span id="skill1-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">招募遴選</span>
+                        <span id="skill1-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">績效考核</span>
+                        <span id="skill1-tag3" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">排班差勤</span>
+                    </div>
+                </div>
+
+                <!-- 技能 2 -->
+                <div class="bg-cosmic-900/40 backdrop-blur-md p-6 rounded-xl border border-cosmic-800/60 shadow-lg hover:border-starlight-gold/30 transition-all">
+                    <div class="w-10 h-10 bg-cosmic-800 rounded-lg flex items-center justify-center mb-4 text-starlight-gold">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 id="skill2-title" contenteditable="false" class="text-lg font-bold text-white mb-2">數位與 AI 工具應用</h3>
+                    <p id="skill2-desc" contenteditable="false" class="text-sm text-cosmic-200 leading-relaxed">
+                        精通 MS Office (Word/Excel/PPT)，導入 Power BI 進行數據分析。完成健行科大 400 小時「數位辦公與AI應用」職訓。
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <span id="skill2-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">Power BI</span>
+                        <span id="skill2-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">AI 協作</span>
+                        <span id="skill2-tag3" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">MOS 認證</span>
+                    </div>
+                </div>
+
+                <!-- 技能 3 -->
+                <div class="bg-cosmic-900/40 backdrop-blur-md p-6 rounded-xl border border-cosmic-800/60 shadow-lg hover:border-starlight-gold/30 transition-all">
+                    <div class="w-10 h-10 bg-cosmic-800 rounded-lg flex items-center justify-center mb-4 text-starlight-gold">
+                        <i data-lucide="speech" class="w-6 h-6"></i>
+                    </div>
+                    <h3 id="skill3-title" contenteditable="false" class="text-lg font-bold text-white mb-2">跨領域溝通與宣導</h3>
+                    <p id="skill3-desc" contenteditable="false" class="text-sm text-cosmic-200 leading-relaxed">
+                        具備 30 場以上法規宣導講師經歷與新聞稿撰寫能力；長照一線服務經驗磨練出卓越的情緒調適與高難度家庭協調能力。
+                    </p>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <span id="skill3-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">法令宣導</span>
+                        <span id="skill3-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">新聞稿撰寫</span>
+                        <span id="skill3-tag3" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">危機協調</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 重要實績 (Selected Achievements) -->
+    <section id="portfolio" class="py-16 max-w-4xl mx-auto px-6">
+        <div class="flex items-center gap-2 mb-10">
+            <i data-lucide="check-square" class="w-6 h-6 text-starlight-gold"></i>
+            <h2 id="port-heading" contenteditable="false" class="text-2xl font-bold tracking-wider text-white">重要實績 | Selected Achievements</h2>
+        </div>
+
+        <div class="space-y-8">
+            <!-- 實績 1 -->
+            <div class="bg-cosmic-900/40 backdrop-blur-md rounded-xl border border-cosmic-800 overflow-hidden flex flex-col md:flex-row hover:border-starlight-gold/20 transition-all">
+                <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-semibold text-starlight-gold mb-2">
+                            <span id="port1-dept" contenteditable="false">內政部移民署</span>
+                            <span class="w-1 h-1 rounded-full bg-cosmic-800"></span>
+                            <span id="port1-category" contenteditable="false">人事實務</span>
+                        </div>
+                        <h3 id="port1-title" contenteditable="false" class="text-xl font-bold text-white mb-3">招募與考核流程優化</h3>
+                        <p id="port1-desc" contenteditable="false" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
+                            主導 40 人編制年度考績，預先建立各職等考績比例框架、整合 4 個部門主管評比意見，將考績全流程縮短至 <strong>7 個工作天內零錯誤完成</strong>。獨立招募 16 名人員（職務代理人及臨時人員），關鍵職務首招即穩定留任，保證人力運作不斷鏈。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span id="port1-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">7天高效考核</span>
+                        <span id="port1-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">100% 穩定留任</span>
+                    </div>
+                </div>
+                <div class="bg-cosmic-900/65 md:w-1/3 p-6 flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-cosmic-800 text-center">
+                    <span id="port1-num-title" contenteditable="false" class="text-sm font-semibold text-cosmic-300 mb-1">年度考績協同</span>
+                    <span id="port1-num" contenteditable="false" class="text-4xl font-extrabold text-starlight-gold my-2">100%</span>
+                    <span id="port1-num-desc" contenteditable="false" class="text-xs text-cosmic-300">零補正、快速交付</span>
+                </div>
+            </div>
+
+            <!-- 實績 2 -->
+            <div class="bg-cosmic-900/40 backdrop-blur-md rounded-xl border border-cosmic-800 overflow-hidden flex flex-col md:flex-row hover:border-starlight-gold/20 transition-all">
+                <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-semibold text-starlight-gold mb-2">
+                            <span id="port2-dept" contenteditable="false">內政部移民署</span>
+                            <span class="w-1 h-1 rounded-full bg-cosmic-800"></span>
+                            <span id="port2-category" contenteditable="false">差勤與福利</span>
+                        </div>
+                        <h3 id="port2-title" contenteditable="false" class="text-xl font-bold text-white mb-3">雙班制精準差勤與主動關懷流程</h3>
+                        <p id="port2-desc" contenteditable="false" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
+                            統籌 40 人單位早晚雙班制排表，並建立系統化差勤與加班費報表。連續 6 年維持<strong>「零退件、零補正」</strong>優異紀錄。主動宣導並告知同仁各類福利申請時機，最大程度確保團隊員工權益不遺漏。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span id="port2-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">連續 6 年零退件</span>
+                        <span id="port2-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">精準排班報支</span>
+                    </div>
+                </div>
+                <div class="bg-cosmic-900/65 md:w-1/3 p-6 flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-cosmic-800 text-center">
+                    <span id="port2-num-title" contenteditable="false" class="text-sm font-semibold text-cosmic-300 mb-1">差勤管理紀錄</span>
+                    <span id="port2-num" contenteditable="false" class="text-4xl font-extrabold text-starlight-gold my-2">0</span>
+                    <span id="port2-num-desc" contenteditable="false" class="text-xs text-cosmic-300">退件率與補正率</span>
+                </div>
+            </div>
+
+            <!-- 實績 3 -->
+            <div class="bg-cosmic-900/40 backdrop-blur-md rounded-xl border border-cosmic-800 overflow-hidden flex flex-col md:flex-row hover:border-starlight-gold/20 transition-all">
+                <div class="p-6 md:w-2/3 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-semibold text-starlight-gold mb-2">
+                            <span id="port3-dept" contenteditable="false">跨界宣導與溝通</span>
+                            <span class="w-1 h-1 rounded-full bg-cosmic-800"></span>
+                            <span id="port3-category" contenteditable="false">公關與法規</span>
+                        </div>
+                        <h3 id="port3-title" contenteditable="false" class="text-xl font-bold text-white mb-3">法令宣導講師與新聞傳播</h3>
+                        <p id="port3-desc" contenteditable="false" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
+                            自主研讀複雜的新住民法令與法規，將其轉化為通俗易懂的口語內容。累計講授 <strong>30 場宣導活動</strong>，觸及人數超過 600 人次。在宣導後，獨立撰寫新聞稿並積極連蹟地方媒體進行刊登報導，大幅提升單位正面曝光度。
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span id="port3-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">累計 30 場講座</span>
+                        <span id="port3-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">公關新聞稿撰寫</span>
+                    </div>
+                </div>
+                <div class="bg-cosmic-900/65 md:w-1/3 p-6 flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-cosmic-800 text-center">
+                    <span id="port3-num-title" contenteditable="false" class="text-sm font-semibold text-cosmic-300 mb-1">觸及對象</span>
+                    <span id="port3-num" contenteditable="false" class="text-4xl font-extrabold text-starlight-gold my-2">600+</span>
+                    <span id="port3-num-desc" contenteditable="false" class="text-xs text-cosmic-300">新住民與社群人次</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡方式 (Contact Section) -->
+    <section id="contact" class="py-16 bg-cosmic-900/30 border-t border-cosmic-800">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex items-center gap-2 mb-10">
+                <i data-lucide="mail" class="w-6 h-6 text-starlight-gold"></i>
+                <h2 id="contact-heading" contenteditable="false" class="text-2xl font-bold tracking-wider text-white">聯絡方式 | Get In Touch</h2>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-8 items-start">
+                <!-- 聯絡管道資訊 -->
+                <div class="md:col-span-2 space-y-6">
+                    <p id="contact-desc" contenteditable="false" class="text-sm text-cosmic-200 leading-relaxed">
+                        目前我正在積極尋求鶯歌或桃園地區的人事相關工作。不論您需要的是制度導入、精準行政流程維護或是跨部門的協調，我都非常期待與您聊聊。
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <a href="tel:0973467003" class="flex items-center gap-3 p-3 bg-cosmic-900/40 rounded-lg border border-cosmic-800 hover:border-starlight-gold/40 transition-colors group">
+                            <div class="w-8 h-8 bg-cosmic-800 rounded-md flex items-center justify-center text-starlight-gold">
+                                <i data-lucide="phone" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-cosmic-300">行動電話</p>
+                                <p id="contact-phone" contenteditable="false" class="text-sm font-semibold text-white group-hover:text-starlight-gold">0973-467-003</p>
+                            </div>
+                        </a>
+
+                        <a href="mailto:b95305019@gmail.com" class="flex items-center gap-3 p-3 bg-cosmic-900/40 rounded-lg border border-cosmic-800 hover:border-starlight-gold/40 transition-colors group">
+                            <div class="w-8 h-8 bg-cosmic-800 rounded-md flex items-center justify-center text-starlight-gold">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-cosmic-300">電子郵件</p>
+                                <p id="contact-email" contenteditable="false" class="text-sm font-semibold text-white group-hover:text-starlight-gold">b95305019@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-3 p-3 bg-cosmic-900/40 rounded-lg border border-cosmic-800">
+                            <div class="w-8 h-8 bg-cosmic-800 rounded-md flex items-center justify-center text-starlight-gold">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-cosmic-300">通訊地址</p>
+                                <p id="contact-addr" contenteditable="false" class="text-sm font-semibold text-white">新北市鶯歌區永和街95號</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快速聯絡表單 -->
+                <div class="md:col-span-3 bg-cosmic-900/40 backdrop-blur-sm p-6 rounded-xl border border-cosmic-800 shadow-lg">
+                    <h3 id="form-heading" contenteditable="false" class="font-bold text-white mb-4 text-base">留言給我</h3>
+                    <form onsubmit="handleSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-cosmic-200 mb-1">您的姓名 / 公司名稱</label>
+                            <input type="text" id="form-name" required class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold" placeholder="王小明 HR">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-cosmic-200 mb-1">聯絡信箱 / 電子郵件</label>
+                            <input type="text" id="form-contact" required class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold" placeholder="example@mail.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-cosmic-200 mb-1">想對我說的話</label>
+                            <textarea id="form-message" rows="3" required class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold animate-none" placeholder="哈囉凱群，我們對您的台大與移民署人事經驗非常有興趣..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2 bg-starlight-gold text-cosmic-950 rounded-md text-sm font-extrabold hover:bg-opacity-90 transition-colors flex items-center justify-center gap-2 shadow-md">
+                            <i data-lucide="send" class="w-4 h-4"></i> <span>傳送訊息</span>
+                        </button>
+                    </form>
+                    <div id="success-toast" class="hidden mt-4 p-3 bg-emerald-950/60 border border-emerald-900 text-emerald-300 text-xs rounded-md flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> <span>模擬傳送成功！這只是一個前端展示頁，若需聯絡，請直接撥打電話或來信。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-cosmic-950 text-cosmic-300 py-10 border-t border-cosmic-800">
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-3">
+            <p id="footer-name" contenteditable="false" class="text-sm font-bold text-white tracking-wider">黃凱群 Kai-Chun Huang</p>
+            <p id="footer-desc" contenteditable="false" class="text-xs text-cosmic-300/80">
+                嚴謹、主動、數位驅動。致力為組織建立最穩定、最有效率的運作架構。
+            </p>
+            <p class="text-[10px] text-cosmic-300/50 pt-4">
+                © 2026 黃凱群. All Rights Reserved. Built with Tailwind CSS.
+            </p>
+        </div>
+    </footer>
+
+    <!-- 自訂通知 Toast -->
+    <div id="custom-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 hidden bg-cosmic-900 text-white text-xs sm:text-sm px-4 py-3 rounded-xl shadow-2xl border border-cosmic-800 items-center gap-2">
+        <i data-lucide="info" class="w-4 h-4 text-starlight-gold"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- 核心 JS 引擎：控制編輯、拖曳、縮放與匯出 -->
+    <script>
+        // 初始化 Lucide 圖標
+        lucide.createIcons();
+
+        // 狀態變數
+        let isEditMode = false;
+        
+        // 圖片變形狀態 (拖曳 & 縮放)
+        let transformState = {
+            scale: 1,
+            x: 0,
+            y: 0
+        };
+
+        let isDragging = false;
+        let startX = 0, startY = 0;
+
+        // 需要被納入可編輯範圍的 Element ID 陣列
+        const editableElements = [
+            'nav-logo', 'hero-tag', 'hero-title', 'hero-subtitle', 'hero-desc',
+            'about-heading', 'about-p1', 'about-p2', 'about-p3', 'about-quote',
+            'info-title', 'info-edu', 'info-loc', 'info-exam', 'info-age',
+            'skills-heading', 'skill1-title', 'skill1-desc', 'skill1-tag1', 'skill1-tag2', 'skill1-tag3',
+            'skill2-title', 'skill2-desc', 'skill2-tag1', 'skill2-tag2', 'skill2-tag3',
+            'skill3-title', 'skill3-desc', 'skill3-tag1', 'skill3-tag2', 'skill3-tag3',
+            'port-heading', 
+            'port1-dept', 'port1-category', 'port1-title', 'port1-desc', 'port1-tag1', 'port1-tag2', 'port1-num-title', 'port1-num', 'port1-num-desc',
+            'port2-dept', 'port2-category', 'port2-title', 'port2-desc', 'port2-tag1', 'port2-tag2', 'port2-num-title', 'port2-num', 'port2-num-desc',
+            'port3-dept', 'port3-category', 'port3-title', 'port3-desc', 'port3-tag1', 'port3-tag2', 'port3-num-title', 'port3-num', 'port3-num-desc',
+            'contact-heading', 'contact-desc', 'contact-phone', 'contact-email', 'contact-addr',
+            'form-heading', 'footer-name', 'footer-desc'
+        ];
+
+        // -------------------------
+        // 1. 編輯模式切換功能
+        // -------------------------
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const body = document.body;
+            const btn = document.getElementById('edit-toggle-btn');
+            const btnText = document.getElementById('edit-btn-text');
+            const banner = document.getElementById('edit-banner');
+
+            if (isEditMode) {
+                body.classList.add('edit-active');
+                btn.classList.replace('bg-cosmic-800', 'bg-emerald-600');
+                btn.classList.replace('hover:bg-cosmic-700', 'hover:bg-emerald-700');
+                btnText.innerText = "完成並儲存編輯";
+                banner.classList.remove('hidden');
+                
+                // 開啟所有區塊的編輯功能
+                editableElements.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.setAttribute('contenteditable', 'true');
+                });
+                
+                showToast("已啟動編輯模式！您可以直接點擊網頁文字進行修改。");
+            } else {
+                body.classList.remove('edit-active');
+                btn.classList.replace('bg-emerald-600', 'bg-cosmic-800');
+                btn.classList.replace('hover:bg-emerald-700', 'hover:bg-cosmic-700');
+                btnText.innerText = "啟動編輯模式";
+                banner.classList.add('hidden');
+                
+                // 關閉所有區塊的編輯功能
+                editableElements.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.setAttribute('contenteditable', 'false');
+                });
+                
+                // 儲存修改內容至 LocalStorage
+                saveAllTextToCache();
+                showToast("編輯已暫存於此瀏覽器中！");
+            }
+            // 重新刷新圖標
+            lucide.createIcons();
+        }
+
+        // -------------------------
+        // 2. 本機快取處理 (持久化)
+        // -------------------------
+        function saveAllTextToCache() {
+            editableElements.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    localStorage.setItem('kai_chun_text_' + id, el.innerHTML);
+                }
+            });
+        }
+
+        function loadAllTextFromCache() {
+            editableElements.forEach(id => {
+                const cached = localStorage.getItem('kai_chun_text_' + id);
+                const el = document.getElementById(id);
+                if (cached && el) {
+                    el.innerHTML = cached;
+                }
+            });
+        }
+
+        function clearAllCache() {
+            if (confirm("您確定要清除所有自訂內容、背景圖與頭像，恢復星空山脈預設設定嗎？")) {
+                localStorage.clear();
+                window.location.reload();
+            }
+        }
+
+        // -------------------------
+        // 3. 頭像處理：上傳、縮放與拖曳定位
+        // -------------------------
+        const avatarContainer = document.getElementById('avatar-container');
+        const avatarImg = document.getElementById('avatar-img');
+        const avatarPlaceholder = document.getElementById('avatar-placeholder');
+        const controlPanel = document.getElementById('avatar-control-panel');
+        const scaleSlider = document.getElementById('avatar-scale');
+
+        // 讀取上傳之頭像
+        function uploadAvatar(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // 限制 2MB
+                if (file.size > 2 * 1024 * 1024) {
+                    showToast("為確保效能，請上傳小於 2MB 的圖片！");
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    setAvatarSource(e.target.result);
+                    // 歸零變形狀態
+                    transformState = { scale: 1, x: 0, y: 0 };
+                    scaleSlider.value = 1;
+                    adjustAvatarTransform();
+                    saveAvatarToCache();
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function setAvatarSource(base64Data) {
+            avatarImg.src = base64Data;
+            avatarImg.classList.remove('hidden');
+            avatarPlaceholder.classList.add('hidden');
+            controlPanel.classList.remove('hidden');
+        }
+
+        // 綁定拖曳事件 (支援桌面與行動裝置)
+        avatarContainer.addEventListener('pointerdown', (e) => {
+            if (avatarImg.classList.contains('hidden')) return;
+            isDragging = true;
+            avatarContainer.setPointerCapture(e.pointerId);
+            startX = e.clientX - transformState.x;
+            startY = e.clientY - transformState.y;
+            avatarContainer.style.cursor = 'grabbing';
+        });
+
+        avatarContainer.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+            transformState.x = e.clientX - startX;
+            transformState.y = e.clientY - startY;
+            adjustAvatarTransform();
+        });
+
+        avatarContainer.addEventListener('pointerup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            avatarContainer.releasePointerCapture(e.pointerId);
+            avatarContainer.style.cursor = 'move';
+            saveAvatarToCache();
+        });
+
+        // 調整 Transform 屬性
+        function adjustAvatarTransform() {
+            transformState.scale = parseFloat(scaleSlider.value);
+            avatarImg.style.transform = `translate(${transformState.x}px, ${transformState.y}px) scale(${transformState.scale})`;
+        }
+
+        // 快取頭像資料
+        function saveAvatarToCache() {
+            if (avatarImg.src && !avatarImg.src.includes('window.location')) {
+                localStorage.setItem('kai_chun_avatar_data', avatarImg.src);
+                localStorage.setItem('kai_chun_avatar_transform', JSON.stringify(transformState));
+            }
+        }
+
+        // -------------------------
+        // 4. 表頭自訂背景圖處理
+        // -------------------------
+        const heroSection = document.getElementById('hero-section');
+        const resetBgBtn = document.getElementById('reset-bg-btn');
+
+        function uploadHeaderBg(event) {
+            const file = event.target.files[0];
+            if (file) {
+                if (file.size > 2.5 * 1024 * 1024) {
+                    showToast("背景圖建議小於 2.5MB 以維持流暢度！");
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    setHeaderBg(e.target.result);
+                    localStorage.setItem('kai_chun_header_bg', e.target.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function setHeaderBg(imageUrl) {
+            heroSection.style.backgroundImage = `linear-gradient(135deg, rgba(11, 9, 20, 0.93) 0%, rgba(20, 17, 36, 0.75) 100%), url('${imageUrl}')`;
+            resetBgBtn.classList.remove('hidden');
+        }
+
+        function resetHeaderBg() {
+            heroSection.style.backgroundImage = `linear-gradient(135deg, rgba(11, 9, 20, 0.95) 0%, rgba(26, 22, 46, 0.85) 100%)`;
+            resetBgBtn.classList.add('hidden');
+            localStorage.removeItem('kai_chun_header_bg');
+            showToast("背景圖已重置為星空漸層背景。");
+        }
+
+        // -------------------------
+        // 5. 初始載入與資料還原
+        // -------------------------
+        window.addEventListener('DOMContentLoaded', () => {
+            // 還原文字快取
+            loadAllTextFromCache();
+
+            // 還原頭像快取
+            const cachedAvatar = localStorage.getItem('kai_chun_avatar_data');
+            const cachedTransform = localStorage.getItem('kai_chun_avatar_transform');
+            if (cachedAvatar) {
+                setAvatarSource(cachedAvatar);
+                if (cachedTransform) {
+                    transformState = JSON.parse(cachedTransform);
+                    scaleSlider.value = transformState.scale;
+                    adjustAvatarTransform();
+                }
+            }
+
+            // 還原背景圖快取
+            const cachedBg = localStorage.getItem('kai_chun_header_bg');
+            if (cachedBg) {
+                setHeaderBg(cachedBg);
+            }
+        });
+
+        // -------------------------
+        // 6. 核心精髓：動態「匯出 HTML」引擎
+        // -------------------------
+        function exportHTML() {
+            // 若處於編輯模式，先短暫關閉以確保導出的 DOM 乾淨無瑕
+            const wasEditMode = isEditMode;
+            if (isEditMode) {
+                toggleEditMode();
+            }
+
+            // 複製一份當前的 Document 克隆體，以進行程式碼清洗與預設值寫入
+            const docClone = document.documentElement.cloneNode(true);
+
+            // 清洗：移除控制面板、編輯提示橫幅與自訂 Toast，確保面試官看到的網頁是乾淨的
+            const selectorsToRemove = [
+                '.fixed.bottom-6.right-6', // 控制面板
+                '#edit-banner',           // 頂部提示條
+                '#custom-toast',          // Toast 元件
+                '.absolute.top-4.right-4', // 背景圖更換按鈕
+                '#avatar-control-panel',  // 頭像縮放控制條
+                'label[for="avatar-upload"]' // 更換個人照遮罩
+            ];
+            
+            selectorsToRemove.forEach(selector => {
+                const el = docClone.querySelector(selector);
+                if (el) el.remove();
+            });
+
+            // 注入：將目前拖曳、縮放後的圖片 CSS Style 固化在克隆體的 <img> 內
+            const cloneAvatarImg = docClone.querySelector('#avatar-img');
+            const cloneAvatarPlaceholder = docClone.querySelector('#avatar-placeholder');
+            
+            if (avatarImg.src && !avatarImg.classList.contains('hidden')) {
+                cloneAvatarImg.src = avatarImg.src;
+                cloneAvatarImg.classList.remove('hidden');
+                cloneAvatarImg.style.transform = `translate(${transformState.x}px, ${transformState.y}px) scale(${transformState.scale})`;
+                if (cloneAvatarPlaceholder) cloneAvatarPlaceholder.remove();
+            }
+
+            // 注入：將背景圖固化到克隆體的 <header> 中
+            const cloneHeroSection = docClone.querySelector('#hero-section');
+            if (cloneHeroSection) {
+                cloneHeroSection.style.backgroundImage = heroSection.style.backgroundImage;
+            }
+
+            // 整理：將所有已編輯的文字直接硬編碼（Hardcode）為新文件的預設 HTML 值
+            editableElements.forEach(id => {
+                const originEl = document.getElementById(id);
+                const cloneEl = docClone.querySelector('#' + id);
+                if (originEl && cloneEl) {
+                    cloneEl.innerHTML = originEl.innerHTML;
+                    cloneEl.removeAttribute('contenteditable'); // 面試官打開時預設不啟用編輯
+                }
+            });
+
+            // 將清洗後的完整原始碼包裝成 Blob 下載
+            const finalHTML = '<!DOCTYPE html>\n' + docClone.outerHTML;
+            const blob = new Blob([finalHTML], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `黃凱群_個人網頁履歷.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            // 還原當前的編輯狀態
+            if (wasEditMode) {
+                toggleEditMode();
+            }
+
+            showToast("您的專屬網頁已成功導出！此檔案已包含您修改的文字與照片。");
+        }
+
+        // -------------------------
+        // 7. 自訂提示組件 (Toast)
+        // -------------------------
+        function showToast(message) {
+            const toast = document.getElementById('custom-toast');
+            const msgSpan = document.getElementById('toast-message');
+            msgSpan.innerText = message;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 5000);
+        }
+
+        // 表單模擬提交
+        function handleSubmit(event) {
+            event.preventDefault();
+            const toast = document.getElementById('success-toast');
+            toast.classList.remove('hidden');
+            document.getElementById('form-name').value = '';
+            document.getElementById('form-contact').value = '';
+            document.getElementById('form-message').value = '';
+            setTimeout(() => { toast.classList.add('hidden'); }, 8000);
+        }
+    </script>
+</body>
+</html>
