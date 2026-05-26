@@ -58,10 +58,10 @@
                 <i data-lucide="user" class="mr-3 text-starlight-gold"></i>關於我
             </h2>
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- 個人照片區塊 -->
-                <div class="relative group">
+                <!-- 個人照片區塊：移除 w-full 並限制最大寬度以維持原圖比例 -->
+                <div class="relative group flex justify-center md:justify-start">
                     <div class="absolute inset-0 bg-starlight-gold opacity-10 rounded-2xl rotate-3 transition-transform group-hover:rotate-6"></div>
-                    <img src="image/aboutme.png" alt="黃凱群個人照片" class="relative w-full h-auto rounded-2xl shadow-lg border border-cosmic-800">
+                    <img src="image/aboutme.png" alt="黃凱群個人照片" class="relative max-w-[280px] h-auto rounded-2xl shadow-lg border border-cosmic-800">
                 </div>
                 <!-- 文字描述區塊 -->
                 <div class="space-y-6">
