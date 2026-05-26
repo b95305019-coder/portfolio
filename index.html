@@ -1,71 +1,151 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黃凱群 | 人事人員 HR Specialist</title>
+    <title>黃凱群 | 人事人員 HR Specialist 個人介紹</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cosmic: {
+                            50: '#F5F4F7', 100: '#E2E0E6', 200: '#C7C2D1',
+                            300: '#948CA3', 800: '#2A253B', 900: '#141124', 950: '#0B0914',
+                        },
+                        starlight: { gold: '#E6C280', silver: '#D1CDD6' }
+                    },
+                    fontFamily: { sans: ['PingFang TC', 'Noto Sans TC', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
     <style>
         .starry-gradient { background: linear-gradient(135deg, #0B0914 0%, #1A162E 50%, #141124 100%); }
     </style>
 </head>
-<body class="bg-cosmic-950 text-white font-sans antialiased starry-gradient min-h-screen">
+<body class="bg-cosmic-950 text-cosmic-100 font-sans antialiased leading-relaxed">
 
-    <header class="py-20 px-6">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
-            <!-- 固定頭像 -->
-            <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-slate-700 shadow-2xl">
-                <img src="image/me.png" alt="黃凱群" class="w-full h-full object-cover">
+    <nav class="sticky top-0 z-50 bg-cosmic-950/80 backdrop-blur-md border-b border-cosmic-800">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="text-xl font-extrabold tracking-wider text-white">KAI-CYUN.</span>
+            <div class="flex space-x-6 text-sm font-medium text-cosmic-200">
+                <a href="#about" class="hover:text-starlight-gold transition-colors">關於我</a>
+                <a href="#skills" class="hover:text-starlight-gold transition-colors">核心技能</a>
+                <a href="#portfolio" class="hover:text-starlight-gold transition-colors">專業實績</a>
+                <a href="#contact" class="hover:text-starlight-gold transition-colors">聯絡方式</a>
             </div>
+        </div>
+    </nav>
 
-            <div class="text-center md:text-left">
-                <h1 class="text-4xl font-extrabold mb-2">黃凱群 (Kai-Chun Huang)</h1>
-                <p class="text-xl text-yellow-500 font-semibold mb-4">以公職嚴謹與數據精神，驅動高效數位化招募考核的人事專業者</p>
-                <p class="text-slate-300 max-w-lg leading-relaxed">
-                    國立臺灣大學社會學系畢業。具備 10 年公務體系穩定資歷，擅長 HR 實務、績效考核與跨部門溝通。靈活運用 AI 與數位工具，致力於提升組織行政效能。
-                </p>
+    <header id="hero" class="py-20 md:py-32 starry-gradient border-b border-cosmic-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-block p-1 bg-cosmic-800 rounded-full mb-6">
+                <span class="px-4 py-1 text-xs uppercase tracking-widest text-starlight-gold">HR Specialist</span>
             </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6">黃凱群<br><span class="text-cosmic-300">Huang Kai-Cyun</span></h1>
+            <p class="text-lg md:text-xl text-cosmic-200 max-w-2xl mx-auto leading-relaxed">
+                致力於人才招募與組織發展的人事專家。以數據驅動決策，以人為本，建立高效且溫暖的職場文化。
+            </p>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-6 pb-20">
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold border-l-4 border-yellow-500 pl-4 mb-6">關於我</h2>
-            <p class="text-slate-300">畢業於國立臺灣大學社會學系。在移民署服務期間，累積了紮實的人事管理經驗，特別是在招募、考核與差勤管理上，堅持「零錯誤」的高標準。</p>
-        </section>
-
-        <section>
-            <h2 class="text-2xl font-bold border-l-4 border-yellow-500 pl-4 mb-6">核心技能</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-                    <h3 class="font-bold text-yellow-500 mb-2">人事實務管理</h3>
-                    <p class="text-sm text-slate-400">招募遴選、績效考核比例框架建立、雙班制排班與差勤管理。</p>
+    <section id="about" class="py-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white flex items-center">
+                <i data-lucide="user" class="mr-3 text-starlight-gold"></i>關於我
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- 個人照片區塊 -->
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-starlight-gold opacity-10 rounded-2xl rotate-3 transition-transform group-hover:rotate-6"></div>
+                    <img src="image/aboutme.png" alt="黃凱群個人照片" class="relative w-full h-auto rounded-2xl shadow-lg border border-cosmic-800">
                 </div>
-                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-                    <h3 class="font-bold text-yellow-500 mb-2">數位化應用</h3>
-                    <p class="text-sm text-slate-400">精通 Office 辦公軟體、Power BI 數據分析及 AI 協作工具。</p>
+                <!-- 文字描述區塊 -->
+                <div class="space-y-6">
+                    <div class="bg-cosmic-900/50 p-8 rounded-2xl border border-cosmic-800">
+                        <p class="text-cosmic-200 leading-relaxed mb-4">
+                            擁有多年人力資源領域經驗，專注於招募策略、員工關係管理與績效考核體系優化。
+                        </p>
+                        <p class="text-cosmic-200 leading-relaxed">
+                            我相信優秀的人才是企業成長的核心，而優質的人資服務則是連結員工與企業願景的橋樑。
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 text-cosmic-300">
+                        <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        <span>台灣，台北</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-cosmic-300">
+                        <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        <span>人力資源發展部</span>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer class="py-10 text-center text-slate-500 text-sm">
-        <p>© 2026 黃凱群. All Rights Reserved.</p>
-    </footer>
+    <section id="skills" class="py-20 bg-cosmic-900/30">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white flex items-center">
+                <i data-lucide="zap" class="mr-3 text-starlight-gold"></i>核心技能
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="p-6 bg-cosmic-950 border border-cosmic-800 rounded-xl hover:border-starlight-gold transition-colors">
+                    <h3 class="font-bold text-white mb-2">人才招募</h3>
+                    <p class="text-sm text-cosmic-300">招募管道開發與面試評估</p>
+                </div>
+                <div class="p-6 bg-cosmic-950 border border-cosmic-800 rounded-xl hover:border-starlight-gold transition-colors">
+                    <h3 class="font-bold text-white mb-2">員工關係</h3>
+                    <p class="text-sm text-cosmic-300">企業文化與溝通協調</p>
+                </div>
+                <div class="p-6 bg-cosmic-950 border border-cosmic-800 rounded-xl hover:border-starlight-gold transition-colors">
+                    <h3 class="font-bold text-white mb-2">績效管理</h3>
+                    <p class="text-sm text-cosmic-300">KPI 目標設定與考核執行</p>
+                </div>
+                <div class="p-6 bg-cosmic-950 border border-cosmic-800 rounded-xl hover:border-starlight-gold transition-colors">
+                    <h3 class="font-bold text-white mb-2">法規合規</h3>
+                    <p class="text-sm text-cosmic-300">勞動基準法規專業諮詢</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="portfolio" class="py-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-white flex items-center">
+                <i data-lucide="award" class="mr-3 text-starlight-gold"></i>專業實績
+            </h2>
+            <div class="space-y-8">
+                <div class="relative pl-8 border-l border-cosmic-800">
+                    <div class="absolute -left-[5px] top-0 w-3 h-3 bg-starlight-gold rounded-full"></div>
+                    <h3 class="text-xl font-bold text-white">招募流程數位化轉型</h3>
+                    <p class="text-starlight-gold mb-2">2023 - 至今</p>
+                    <p class="text-cosmic-300">導入自動化招募管理系統(ATS)，提升招募效率達 30%，並優化候選人體驗。</p>
+                </div>
+                <div class="relative pl-8 border-l border-cosmic-800">
+                    <div class="absolute -left-[5px] top-0 w-3 h-3 bg-starlight-gold rounded-full"></div>
+                    <h3 class="text-xl font-bold text-white">人才培育與職涯規劃</h3>
+                    <p class="text-starlight-gold mb-2">2021 - 2022</p>
+                    <p class="text-cosmic-300">規劃完整的內部培訓課程與職涯發展藍圖，有效降低關鍵職位離職率。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-cosmic-900/30">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-8 text-white">準備好開啟交流了嗎？</h2>
+            <p class="text-cosmic-200 mb-10">歡迎隨時與我聯繫，討論人力資源策略或任何合作機會。</p>
+            <a href="mailto:example@email.com" class="inline-flex items-center px-8 py-4 bg-starlight-gold text-cosmic-950 font-bold rounded-full hover:bg-white transition-all shadow-[0_0_25px_rgba(230,194,128,0.3)]">
+                <i data-lucide="mail" class="mr-2"></i> 發送電子郵件
+            </a>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
-```
-
-### 💡 關鍵檢查點（若照片依然未顯示）
-
-既然我們已經將代碼設定為讀取 `image/me.png`，如果您上傳後網頁仍顯示空白，請務必確認以下兩點，這是 GitHub Pages 常見的發佈延遲：
-
-1.  **檔案路徑大小寫**：確認 GitHub 儲存庫中，資料夾名稱真的是 `image`（小寫），且照片檔案名稱真的是 `me.png`（與程式碼完全一致，包括副檔名）。
-2.  **檔案層級**：確保您的檔案結構是這樣：
-    ```text
-    / 儲存庫根目錄
-    ├── index.html
-    └── image/
-        └── me.png
