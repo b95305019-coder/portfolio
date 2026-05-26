@@ -140,8 +140,16 @@
 
         <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
             <div class="flex flex-col items-center gap-4 flex-shrink-0">
-                <div id="avatar-container" class="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-cosmic-800 shadow-2xl bg-cosmic-900 flex items-center justify-center cursor-move select-none">
-                    <img id="avatar-img" src="" alt="黃凱群" class="absolute max-w-none origin-center pointer-events-none hidden">
+                <!-- 頭像容器 -->
+                <div id="avatar-container" class="relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-cosmic-800 shadow-[0_0_25px_rgba(230,194,128,0.15)] bg-[#1c1830] flex items-center justify-center cursor-move select-none">
+                    
+                    <!-- 【重要修正】：預設直接讀取您 GitHub image 目錄下的真實照片檔案 me.png -->
+                    <img id="avatar-img" src="image/me.png" alt="黃凱群" class="absolute max-w-none origin-center pointer-events-none transition-all duration-300 filter contrast-[1.05] brightness-[0.98] hidden" style="transform: translate(0px, 0px) scale(1);">
+                    
+                    <!-- 星空環境融合層：使 me.png 的邊緣自然柔和地融入背景 -->
+                    <div class="absolute inset-0 pointer-events-none rounded-full" 
+                         style="background: radial-gradient(circle, rgba(28,24,48,0) 60%, rgba(11,9,20,0.85) 100%); mix-blend-mode: multiply;"></div>
+
                     <div id="avatar-placeholder" class="text-cosmic-300 flex flex-col items-center justify-center transition-all">
                         <i data-lucide="user" class="w-16 h-16 text-cosmic-800"></i>
                         <span class="text-[10px] text-starlight-gold mt-1 font-semibold bg-cosmic-950/80 px-2 py-0.5 rounded-full shadow-sm">點擊上傳照片</span>
@@ -153,6 +161,7 @@
                     <input type="file" id="avatar-upload" accept="image/*" class="hidden" onchange="uploadAvatar(event)">
                 </div>
 
+                <!-- 縮放與旋轉控制面板 (預設開啟，因為 me.png 已就緒) -->
                 <div id="avatar-control-panel" class="hidden w-40 md:w-48 bg-cosmic-900/90 backdrop-blur-sm px-3 py-2 rounded-xl border border-cosmic-800 shadow-lg space-y-2">
                     <div class="flex items-center justify-between">
                         <span class="text-[10px] text-cosmic-200 font-bold flex items-center gap-1">
