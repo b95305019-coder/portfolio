@@ -1,13 +1,586 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
+<html lang="zh-TW"><head><script>(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjBmNWQ0MDUwMTk3Y2VjYTZlNzQ4NWJlZmE4OTk2ZGQ3OTJlYTVkMDkiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIxMjY0MjMzNTQyNzY1MzA0NzQzNiIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzg5NTBlYTE4ZWE0ZTE2ZmJfcG9ydGZvbGlvLmh0bWwtNTUxIn0sImV4cCI6MTc3OTc4NjYwMSwiaWF0IjoxNzc5NzgzMDAxLCJhbGciOiJSUzI1NiJ9.YpXg-Jz912Kfa5MF-eVdaj5ZkUdT3p1b8EpQWVXO-l_VnclI97A6pxPkI5pCpJpE1szUEQOQ3fIajChyk__wRrHfkLaXg3uAN1inur9NJDrNP_CyT4PEjwwmpU9-KB3N8ieWKYZSJ5LjfrCdL-Gt-MpjZWDeod22ali-qlEWj_2dHzBxoDUG4pDHCjLY55hcReULHmELqHuwS8n6cvCYhPyWGoSqEeZ4YHpVpV3YxrK51wdNTTFueGpU4yUJ4Jl3Q7yO2iis_KLFm33bVvZmiuBDFT1IMpZ6rVypI2CDRy6Arr8DgmAi5Q8rtJw8yWB60ZlvJAbh2MHA-_FmLCak5w","c_8950ea18ea4e16fb_portfolio.html-551")</script><script>(function(){'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){var d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);var c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{var a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){var b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{var c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){var c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{var c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){var c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);var e=yield c.blob();return new Promise((f,g)=>{var k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){var c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){var c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());try{let f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});var e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){var b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");let c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;var c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){var c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{var g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){let g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){var b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{let e=d?(new URL(b,d||void 0)).toString():b,f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){let [c,,e]=ia.exec(d)||[];if(!e)return"";if(e===b)return`src: ${c};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;var c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c,e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){var d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){var d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){var d=a.cssText,c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){var g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];var b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){var d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){let g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}var d=new Set;b(a);return d}function ua(a,b){return t(function*(){var d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){var d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){let c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){var {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){var {width:d,height:c}=A(a,b),e=yield wa(a,b);e=yield B(e);var f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384));
+f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;let c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){var a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){var b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){var b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+})();</script><script>(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script>
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.i=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.g=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.h="";var l=0,t=null,r=null,q=[],F=new TextEncoder,G=new TextDecoder;
+c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*16|0;return(f===
+"x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;(g=t)==null||g.postMessage(a)}};
+Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script>((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image-preview","imageTransformModelName":"gemini-3-pro-image-preview-11-2025","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image"]})</script><script>(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script>(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>黃凱群 | 人事人員 HR Specialist 個人介紹</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -65,34 +638,19 @@
             scrollbar-width: none;
         }
     </style>
-</head>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:PingFang TC, Heiti TC, Noto Sans TC, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.bottom-6{bottom:1.5rem}.left-1\/2{left:50%}.left-1\/3{left:33.333333%}.left-1\/4{left:25%}.left-2\/3{left:66.666667%}.right-4{right:1rem}.right-6{right:1.5rem}.top-0{top:0px}.top-1\/3{top:33.333333%}.top-1\/4{top:25%}.top-2\/3{top:66.666667%}.top-20{top:5rem}.top-4{top:1rem}.z-10{z-index:10}.z-20{z-index:20}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:0.5rem;margin-bottom:0.5rem}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-1\.5{height:0.375rem}.h-10{height:2.5rem}.h-16{height:4rem}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-40{height:10rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-\[38px\]{height:38px}.w-1{width:0.25rem}.w-1\.5{width:0.375rem}.w-10{width:2.5rem}.w-16{width:4rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-4{width:1rem}.w-40{width:10rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-lg{max-width:32rem}.max-w-none{max-width:none}.flex-shrink-0{flex-shrink:0}.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.origin-center{transform-origin:center}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.animate-none{animation:none}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-move{cursor:move}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.appearance-none{-webkit-appearance:none;appearance:none}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-4{border-width:4px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-cosmic-300\/10{border-color:rgb(148 140 163 / 0.1)}.border-cosmic-800{--tw-border-opacity:1;border-color:rgb(42 37 59 / var(--tw-border-opacity, 1))}.border-cosmic-800\/60{border-color:rgb(42 37 59 / 0.6)}.border-cosmic-800\/80{border-color:rgb(42 37 59 / 0.8)}.border-emerald-900{--tw-border-opacity:1;border-color:rgb(6 78 59 / var(--tw-border-opacity, 1))}.border-red-900\/30{border-color:rgb(127 29 29 / 0.3)}.border-starlight-gold{--tw-border-opacity:1;border-color:rgb(230 194 128 / var(--tw-border-opacity, 1))}.border-starlight-gold\/20{border-color:rgb(230 194 128 / 0.2)}.bg-cosmic-800{--tw-bg-opacity:1;background-color:rgb(42 37 59 / var(--tw-bg-opacity, 1))}.bg-cosmic-800\/30{background-color:rgb(42 37 59 / 0.3)}.bg-cosmic-900{--tw-bg-opacity:1;background-color:rgb(20 17 36 / var(--tw-bg-opacity, 1))}.bg-cosmic-900\/30{background-color:rgb(20 17 36 / 0.3)}.bg-cosmic-900\/40{background-color:rgb(20 17 36 / 0.4)}.bg-cosmic-900\/50{background-color:rgb(20 17 36 / 0.5)}.bg-cosmic-900\/60{background-color:rgb(20 17 36 / 0.6)}.bg-cosmic-900\/65{background-color:rgb(20 17 36 / 0.65)}.bg-cosmic-900\/90{background-color:rgb(20 17 36 / 0.9)}.bg-cosmic-900\/95{background-color:rgb(20 17 36 / 0.95)}.bg-cosmic-950{--tw-bg-opacity:1;background-color:rgb(11 9 20 / var(--tw-bg-opacity, 1))}.bg-cosmic-950\/60{background-color:rgb(11 9 20 / 0.6)}.bg-cosmic-950\/80{background-color:rgb(11 9 20 / 0.8)}.bg-emerald-950\/60{background-color:rgb(2 44 34 / 0.6)}.bg-red-950\/40{background-color:rgb(69 10 10 / 0.4)}.bg-starlight-gold{--tw-bg-opacity:1;background-color:rgb(230 194 128 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-cover{background-size:cover}.bg-center{background-position:center}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-2{padding-bottom:0.5rem}.pb-24{padding-bottom:6rem}.pl-3{padding-left:0.75rem}.pt-4{padding-top:1rem}.text-center{text-align:center}.font-sans{font-family:PingFang TC, Heiti TC, Noto Sans TC, sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-cosmic-100{--tw-text-opacity:1;color:rgb(226 224 230 / var(--tw-text-opacity, 1))}.text-cosmic-200{--tw-text-opacity:1;color:rgb(199 194 209 / var(--tw-text-opacity, 1))}.text-cosmic-300{--tw-text-opacity:1;color:rgb(148 140 163 / var(--tw-text-opacity, 1))}.text-cosmic-300\/50{color:rgb(148 140 163 / 0.5)}.text-cosmic-300\/80{color:rgb(148 140 163 / 0.8)}.text-cosmic-800{--tw-text-opacity:1;color:rgb(42 37 59 / var(--tw-text-opacity, 1))}.text-cosmic-950{--tw-text-opacity:1;color:rgb(11 9 20 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-starlight-gold{--tw-text-opacity:1;color:rgb(230 194 128 / var(--tw-text-opacity, 1))}.text-starlight-silver{--tw-text-opacity:1;color:rgb(209 205 214 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.accent-starlight-gold{accent-color:#E6C280}.opacity-0{opacity:0}.opacity-20{opacity:0.2}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:border-starlight-gold\/20:hover{border-color:rgb(230 194 128 / 0.2)}.hover\:border-starlight-gold\/30:hover{border-color:rgb(230 194 128 / 0.3)}.hover\:border-starlight-gold\/40:hover{border-color:rgb(230 194 128 / 0.4)}.hover\:bg-cosmic-800:hover{--tw-bg-opacity:1;background-color:rgb(42 37 59 / var(--tw-bg-opacity, 1))}.hover\:bg-red-950\/40:hover{background-color:rgb(69 10 10 / 0.4)}.hover\:bg-red-950\/60:hover{background-color:rgb(69 10 10 / 0.6)}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-opacity-90:hover{--tw-bg-opacity:0.9}.hover\:bg-opacity-95:hover{--tw-bg-opacity:0.95}.hover\:text-starlight-gold:hover{--tw-text-opacity:1;color:rgb(230 194 128 / var(--tw-text-opacity, 1))}.hover\:opacity-100:hover{opacity:1}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-1:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-starlight-gold:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(230 194 128 / var(--tw-ring-opacity, 1))}.disabled\:opacity-50:disabled{opacity:0.5}.group:hover .group-hover\:text-starlight-gold{--tw-text-opacity:1;color:rgb(230 194 128 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:w-auto{width:auto}.sm\:flex-row{flex-direction:row}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:col-span-2{grid-column:span 2 / span 2}.md\:col-span-3{grid-column:span 3 / span 3}.md\:h-48{height:12rem}.md\:w-1\/3{width:33.333333%}.md\:w-2\/3{width:66.666667%}.md\:w-48{width:12rem}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:justify-start{justify-content:flex-start}.md\:gap-12{gap:3rem}.md\:border-l{border-left-width:1px}.md\:border-t-0{border-top-width:0px}.md\:py-24{padding-top:6rem;padding-bottom:6rem}.md\:text-left{text-align:left}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style></head>
 <body class="bg-cosmic-950 text-cosmic-100 font-sans antialiased leading-relaxed pb-24 starry-gradient">
 
     <!-- 控制面板：浮動編輯工具列 (星空暗色版) -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col sm:flex-row gap-3 bg-cosmic-900/90 backdrop-blur-md p-3 rounded-2xl shadow-2xl border border-cosmic-800">
-        <button onclick="toggleEditMode()" id="edit-toggle-btn" class="px-4 py-2.5 bg-cosmic-800 text-white text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-cosmic-700 transition-all shadow-sm border border-cosmic-300/10">
-            <i data-lucide="edit-3" class="w-4 h-4 text-starlight-gold"></i>
-            <span id="edit-btn-text">啟動編輯模式</span>
-        </button>
-        <button onclick="exportHTML()" id="export-btn" class="px-4 py-2.5 bg-starlight-gold text-cosmic-950 text-xs sm:text-sm font-extrabold rounded-xl flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all shadow-sm">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span>導出/下載最新網頁</span>
-        </button>
-        <button onclick="clearAllCache()" class="px-3 py-2.5 bg-red-950/40 text-red-400 text-xs sm:text-sm font-medium rounded-xl flex items-center justify-center gap-1.5 hover:bg-red-950/60 transition-all border border-red-900/30">
-            <i data-lucide="trash-2" class="w-4 h-4"></i>
-            <span>重置</span>
-        </button>
-    </div>
+    
 
     <!-- 頂部提示條 (月光金配深底) -->
-    <div id="edit-banner" class="hidden bg-starlight-gold text-cosmic-950 py-2 px-4 text-center text-xs font-bold tracking-wider sticky top-0 z-50 shadow-md animate-pulse">
-        ⚡ 目前處於「編輯模式」！您可以直接點選畫面上任何文字進行修改，亦可拖曳、縮放您的頭像。
-    </div>
+    
 
     <!-- 導覽列 -->
     <nav class="sticky top-0 z-40 bg-cosmic-950/80 backdrop-blur-md border-b border-cosmic-800">
         <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span id="nav-logo" contenteditable="false" class="text-xl font-extrabold tracking-wider text-white">KAI-CHUN.</span>
+            <span id="nav-logo" class="text-xl font-extrabold tracking-wider text-white">KAI-CHUN.</span>
             <div class="flex space-x-6 text-sm font-medium text-cosmic-200">
                 <a href="#about" class="hover:text-starlight-gold transition-colors">關於我</a>
                 <a href="#skills" class="hover:text-starlight-gold transition-colors">核心技能</a>
@@ -103,23 +661,10 @@
     </nav>
 
     <!-- Google Apps Script API URL 編輯面板 (僅在編輯模式顯示) -->
-    <div id="gas-config-container" class="hidden max-w-4xl mx-auto px-6 mt-6">
-        <div class="bg-cosmic-900/60 border border-cosmic-800 p-4 rounded-xl flex flex-col sm:flex-row gap-3 items-end">
-            <div class="flex-grow w-full">
-                <label class="block text-xs font-bold text-starlight-gold mb-1 flex items-center gap-1">
-                    <i data-lucide="link-2" class="w-3.5 h-3.5"></i> Google Apps Script 網頁應用程式網址 (方案 C API)
-                </label>
-                <input type="url" id="gas-url-input" class="w-full px-3 py-2 bg-cosmic-950 border border-cosmic-800 rounded-md text-xs text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold" placeholder="請貼上部署後取得的 https://script.google.com/macros/s/.../exec 網址">
-            </div>
-            <button onclick="saveGasUrlFromForm()" class="w-full sm:w-auto px-4 py-2 bg-starlight-gold text-cosmic-950 font-bold text-xs rounded-md hover:bg-opacity-90 transition-all flex items-center justify-center gap-1 shrink-0 h-[38px]">
-                <i data-lucide="check" class="w-3.5 h-3.5"></i> 儲存 API 網址
-            </button>
-        </div>
-    </div>
+    
 
     <!-- 英雄首頁區 (Hero Section)：預設使用星空山脈漸層與精緻微光 -->
-    <header id="hero-section" class="relative py-16 md:py-24 border-b border-cosmic-800 bg-cover bg-center overflow-hidden transition-all duration-300" 
-            style="background-image: linear-gradient(135deg, rgba(11, 9, 20, 0.95) 0%, rgba(26, 22, 46, 0.85) 100%);">
+    <header id="hero-section" class="relative py-16 md:py-24 border-b border-cosmic-800 bg-cover bg-center overflow-hidden transition-all duration-300" style="background-image: linear-gradient(135deg, rgba(11, 9, 20, 0.95) 0%, rgba(26, 22, 46, 0.85) 100%);">
         
         <!-- 背景星光微粒裝飾 (CSS 模擬) -->
         <div class="absolute inset-0 opacity-20 pointer-events-none">
@@ -129,16 +674,7 @@
         </div>
 
         <!-- 背景上傳控制器 -->
-        <div class="absolute top-4 right-4 z-10 flex gap-2">
-            <label for="bg-upload" class="cursor-pointer bg-cosmic-900/95 hover:bg-cosmic-800 text-starlight-silver px-3 py-1.5 rounded-lg border border-cosmic-800 shadow-sm text-xs font-bold flex items-center gap-1.5 transition-all">
-                <i data-lucide="image" class="w-3.5 h-3.5 text-starlight-gold"></i>
-                <span>更換背景圖</span>
-                <input type="file" id="bg-upload" accept="image/*" class="hidden" onchange="uploadHeaderBg(event)">
-            </label>
-            <button onclick="resetHeaderBg()" id="reset-bg-btn" class="hidden bg-cosmic-900/95 hover:bg-red-950/40 text-red-400 px-2 py-1.5 rounded-lg border border-cosmic-800 shadow-sm text-xs font-bold flex items-center gap-1 transition-all">
-                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
-            </button>
-        </div>
+        
 
         <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
             
@@ -151,49 +687,35 @@
                     
                     <!-- 預設中性 SVG 剪影 -->
                     <div id="avatar-placeholder" class="text-cosmic-300 flex flex-col items-center justify-center transition-all">
-                        <i data-lucide="user" class="w-16 h-16 text-cosmic-800"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" aria-hidden="true" class="lucide lucide-user w-16 h-16 text-cosmic-800"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                         <span class="text-[10px] text-starlight-gold mt-1 font-semibold bg-cosmic-950/80 px-2 py-0.5 rounded-full shadow-sm">點擊上傳照片</span>
                     </div>
                     
                     <!-- 覆蓋提示層 (點擊更換照片) -->
-                    <label for="avatar-upload" class="absolute inset-0 bg-cosmic-950/60 flex flex-col items-center justify-center text-white opacity-0 hover:opacity-100 transition-opacity cursor-pointer z-20">
-                        <i data-lucide="camera" class="w-6 h-6 mb-1 text-starlight-gold"></i>
-                        <span class="text-xs font-semibold">更換個人照</span>
-                    </label>
+                    
                     <input type="file" id="avatar-upload" accept="image/*" class="hidden" onchange="uploadAvatar(event)">
                 </div>
 
                 <!-- 縮放與旋轉控制面板 -->
-                <div id="avatar-control-panel" class="hidden w-40 md:w-48 bg-cosmic-900/90 backdrop-blur-sm px-3 py-2 rounded-xl border border-cosmic-800 shadow-lg space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[10px] text-cosmic-200 font-bold flex items-center gap-1">
-                            <i data-lucide="move" class="w-3 h-3 text-starlight-gold"></i> 拖曳照片以對齊
-                        </span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="zoom-out" class="w-3.5 h-3.5 text-cosmic-300"></i>
-                        <input type="range" id="avatar-scale" min="0.5" max="4" step="0.05" value="1" oninput="adjustAvatarTransform()" class="w-full accent-starlight-gold h-1 bg-cosmic-800 rounded-lg appearance-none cursor-pointer">
-                        <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-cosmic-300"></i>
-                    </div>
-                </div>
+                
             </div>
 
             <!-- 主標題與定位 -->
             <div class="text-center md:text-left">
-                <span id="hero-tag" contenteditable="false" class="inline-block px-3 py-1 bg-cosmic-800 text-starlight-gold text-xs font-semibold uppercase tracking-widest rounded-full mb-3 border border-starlight-gold/20">HR Specialist</span>
-                <h1 id="hero-title" contenteditable="false" class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">黃凱群 (Kai-Chun Huang)</h1>
-                <p id="hero-subtitle" contenteditable="false" class="text-lg md:text-xl font-semibold text-starlight-gold mb-4">
+                <span id="hero-tag" class="inline-block px-3 py-1 bg-cosmic-800 text-starlight-gold text-xs font-semibold uppercase tracking-widest rounded-full mb-3 border border-starlight-gold/20">HR Specialist</span>
+                <h1 id="hero-title" class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">黃凱群 (Kai-Chun Huang)</h1>
+                <p id="hero-subtitle" class="text-lg md:text-xl font-semibold text-starlight-gold mb-4">
                     以公職嚴謹與數據精神，驅動高效數位化招募考核的人事專業者
                 </p>
-                <p id="hero-desc" contenteditable="false" class="text-sm text-cosmic-200 max-w-lg mb-6 leading-relaxed">
+                <p id="hero-desc" class="text-sm text-cosmic-200 max-w-lg mb-6 leading-relaxed">
                     國立臺灣大學社會學系畢業，具備 10 年公務體系穩定資歷，兼具 6 年以上 40 人編制人事實務。靈活結合數位與 AI 應用工具，擅長跨部門協調與高彈性溝通，主動追求精準、零失誤的組織協同運作。
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-3">
                     <a href="#contact" class="px-5 py-2.5 bg-starlight-gold text-cosmic-950 rounded-lg text-sm font-bold shadow-md hover:bg-opacity-95 transition-all flex items-center gap-2">
-                        <i data-lucide="mail" class="w-4 h-4"></i> <span>與我聯絡</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" aria-hidden="true" class="lucide lucide-mail w-4 h-4"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg> <span>與我聯絡</span>
                     </a>
                     <a href="#portfolio" class="px-5 py-2.5 bg-cosmic-900 text-white border border-cosmic-800 rounded-lg text-sm font-semibold hover:bg-cosmic-800 transition-all flex items-center gap-2">
-                        <i data-lucide="briefcase" class="w-4 h-4 text-starlight-gold"></i> <span>查看工作實績</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="briefcase" aria-hidden="true" class="lucide lucide-briefcase w-4 h-4 text-starlight-gold"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg> <span>查看工作實績</span>
                     </a>
                 </div>
             </div>
@@ -203,46 +725,46 @@
     <!-- 關於我 (About Me) -->
     <section id="about" class="py-16 max-w-4xl mx-auto px-6">
         <div class="flex items-center gap-2 mb-8">
-            <i data-lucide="user" class="w-6 h-6 text-starlight-gold"></i>
-            <h2 id="about-heading" contenteditable="false" class="text-2xl font-bold tracking-wider text-white">關於我 | Professional Background</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user" aria-hidden="true" class="lucide lucide-user w-6 h-6 text-starlight-gold"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <h2 id="about-heading" class="text-2xl font-bold tracking-wider text-white">關於我 | Professional Background</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-8 items-start">
             <div class="md:col-span-2 space-y-4 text-cosmic-200">
-                <p id="about-p1" contenteditable="false">
+                <p id="about-p1">
                     你好，我是凱群。畢業於<strong>國立臺灣大學社會學系</strong>，社會學的訓練培養了我敏銳的洞察力與深厚的跨背景溝通特質。
                 </p>
-                <p id="about-p2" contenteditable="false">
+                <p id="about-p2">
                     在<strong>內政部移民署</strong>服務近十年的期間裡，我累積了長達 6 年的人事兼辦實務。曾主導 40 人單位的考核流程、端到端招募、雙班制差勤管理、以及年度教育訓練，並以<strong>「零退件、零補正、零錯誤」</strong>的嚴謹標準維持行政效能。
                 </p>
-                <p id="about-p3" contenteditable="false">
+                <p id="about-p3">
                     此外，我亦曾跨足長照領域擔任居服員，在第一線獨立面對並圓滿協調各種高需求與失智高齡個案。這段經歷極大地鍛鍊了我面對高壓情境時的穩定度，以及溫暖且具韌性的溝通品質。
                 </p>
-                <p id="about-quote" contenteditable="false" class="font-medium text-white border-l-4 border-starlight-gold pl-3 py-1 bg-cosmic-800/30">
+                <p id="about-quote" class="font-medium text-white border-l-4 border-starlight-gold pl-3 py-1 bg-cosmic-800/30">
                     「公部門的嚴謹細緻，結合私部門的敏捷彈性，是我能立即為團隊帶來的高價值貢獻。」
                 </p>
             </div>
             
             <!-- 個人小資訊卡 -->
             <div class="bg-cosmic-900/50 backdrop-blur-md p-6 rounded-xl border border-cosmic-800 shadow-lg space-y-4">
-                <h3 id="info-title" contenteditable="false" class="font-bold text-white border-b border-cosmic-800 pb-2 flex items-center gap-1.5">
-                    <i data-lucide="info" class="w-4 h-4 text-starlight-gold"></i> 基本資訊
+                <h3 id="info-title" class="font-bold text-white border-b border-cosmic-800 pb-2 flex items-center gap-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="info" aria-hidden="true" class="lucide lucide-info w-4 h-4 text-starlight-gold"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> 基本資訊
                 </h3>
                 <ul class="space-y-3 text-sm text-cosmic-200">
                     <li class="flex items-center gap-2">
-                        <i data-lucide="graduation-cap" class="w-4 h-4 text-starlight-gold"></i>
-                        <span id="info-edu" contenteditable="false">台灣大學 社會學系學士</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" aria-hidden="true" class="lucide lucide-graduation-cap w-4 h-4 text-starlight-gold"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+                        <span id="info-edu">台灣大學 社會學系學士</span>
                     </li>
                     <li class="flex items-center gap-2">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-starlight-gold"></i>
-                        <span id="info-loc" contenteditable="false">新北市鶯歌區 / 可通勤桃園</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" aria-hidden="true" class="lucide lucide-map-pin w-4 h-4 text-starlight-gold"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span id="info-loc">新北市鶯歌區 / 可通勤桃園</span>
                     </li>
                     <li class="flex items-center gap-2">
-                        <i data-lucide="award" class="w-4 h-4 text-starlight-gold"></i>
-                        <span id="info-exam" contenteditable="false">持續備考 TOEIC & 就服乙級</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="award" aria-hidden="true" class="lucide lucide-award w-4 h-4 text-starlight-gold"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
+                        <span id="info-exam">持續備考 TOEIC &amp; 就服乙級</span>
                     </li>
                     <li class="flex items-center gap-2">
-                        <i data-lucide="calendar" class="w-4 h-4 text-starlight-gold"></i>
-                        <span id="info-age" contenteditable="false">民國 77 年生 / 37 歲</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-4 h-4 text-starlight-gold"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                        <span id="info-age">民國 77 年生 / 37 歲</span>
                     </li>
                 </ul>
             </div>
@@ -253,56 +775,56 @@
     <section id="skills" class="py-16 bg-cosmic-900/30 border-y border-cosmic-800/80">
         <div class="max-w-4xl mx-auto px-6">
             <div class="flex items-center gap-2 mb-10">
-                <i data-lucide="sliders" class="w-6 h-6 text-starlight-gold"></i>
-                <h2 id="skills-heading" contenteditable="false" class="text-2xl font-bold tracking-wider text-white">核心技能 | Core Expertise</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sliders" aria-hidden="true" class="lucide lucide-sliders w-6 h-6 text-starlight-gold"><path d="M10 8h4"></path><path d="M12 21v-9"></path><path d="M12 8V3"></path><path d="M17 16h4"></path><path d="M19 12V3"></path><path d="M19 21v-5"></path><path d="M3 14h4"></path><path d="M5 10V3"></path><path d="M5 21v-7"></path></svg>
+                <h2 id="skills-heading" class="text-2xl font-bold tracking-wider text-white">核心技能 | Core Expertise</h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- 技能 1 -->
                 <div class="bg-cosmic-900/40 backdrop-blur-md p-6 rounded-xl border border-cosmic-800/60 shadow-lg hover:border-starlight-gold/30 transition-all">
                     <div class="w-10 h-10 bg-cosmic-800 rounded-lg flex items-center justify-center mb-4 text-starlight-gold">
-                        <i data-lucide="users" class="w-6 h-6"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" class="lucide lucide-users w-6 h-6"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
                     </div>
-                    <h3 id="skill1-title" contenteditable="false" class="text-lg font-bold text-white mb-2">人事實務管理</h3>
-                    <p id="skill1-desc" contenteditable="false" class="text-sm text-cosmic-200 leading-relaxed">
+                    <h3 id="skill1-title" class="text-lg font-bold text-white mb-2">人事實務管理</h3>
+                    <p id="skill1-desc" class="text-sm text-cosmic-200 leading-relaxed">
                         熟稔招募端到端流程、雙班制排班與差勤福利結算。曾主導 40 人考核比例框架，具備極高流程掌握度與合規嚴謹度。
                     </p>
                     <div class="mt-4 flex flex-wrap gap-1.5">
-                        <span id="skill1-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">招募遴選</span>
-                        <span id="skill1-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">績效考核</span>
-                        <span id="skill1-tag3" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">排班差勤</span>
+                        <span id="skill1-tag1" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">招募遴選</span>
+                        <span id="skill1-tag2" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">績效考核</span>
+                        <span id="skill1-tag3" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">排班差勤</span>
                     </div>
                 </div>
 
                 <!-- 技能 2 -->
                 <div class="bg-cosmic-900/40 backdrop-blur-md p-6 rounded-xl border border-cosmic-800/60 shadow-lg hover:border-starlight-gold/30 transition-all">
                     <div class="w-10 h-10 bg-cosmic-800 rounded-lg flex items-center justify-center mb-4 text-starlight-gold">
-                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" aria-hidden="true" class="lucide lucide-cpu w-6 h-6"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg>
                     </div>
-                    <h3 id="skill2-title" contenteditable="false" class="text-lg font-bold text-white mb-2">數位與 AI 工具應用</h3>
-                    <p id="skill2-desc" contenteditable="false" class="text-sm text-cosmic-200 leading-relaxed">
+                    <h3 id="skill2-title" class="text-lg font-bold text-white mb-2">數位與 AI 工具應用</h3>
+                    <p id="skill2-desc" class="text-sm text-cosmic-200 leading-relaxed">
                         精通 MS Office (Word/Excel/PPT)，導入 Power BI 進行數據分析。完成健行科大 400 小時「數位辦公與AI應用」職訓。
                     </p>
                     <div class="mt-4 flex flex-wrap gap-1.5">
-                        <span id="skill2-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">Power BI</span>
-                        <span id="skill2-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">AI 協作</span>
-                        <span id="skill2-tag3" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">MOS 認證</span>
+                        <span id="skill2-tag1" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">Power BI</span>
+                        <span id="skill2-tag2" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">AI 協作</span>
+                        <span id="skill2-tag3" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">MOS 認證</span>
                     </div>
                 </div>
 
                 <!-- 技能 3 -->
                 <div class="bg-cosmic-900/40 backdrop-blur-md p-6 rounded-xl border border-cosmic-800/60 shadow-lg hover:border-starlight-gold/30 transition-all">
                     <div class="w-10 h-10 bg-cosmic-800 rounded-lg flex items-center justify-center mb-4 text-starlight-gold">
-                        <i data-lucide="speech" class="w-6 h-6"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="speech" aria-hidden="true" class="lucide lucide-speech w-6 h-6"><path d="M8.8 20v-4.1l1.9.2a2.3 2.3 0 0 0 2.164-2.1V8.3A5.37 5.37 0 0 0 2 8.25c0 2.8.656 3.054 1 4.55a5.77 5.77 0 0 1 .029 2.758L2 20"></path><path d="M19.8 17.8a7.5 7.5 0 0 0 .003-10.603"></path><path d="M17 15a3.5 3.5 0 0 0-.025-4.975"></path></svg>
                     </div>
-                    <h3 id="skill3-title" contenteditable="false" class="text-lg font-bold text-white mb-2">跨領域溝通與宣導</h3>
-                    <p id="skill3-desc" contenteditable="false" class="text-sm text-cosmic-200 leading-relaxed">
+                    <h3 id="skill3-title" class="text-lg font-bold text-white mb-2">跨領域溝通與宣導</h3>
+                    <p id="skill3-desc" class="text-sm text-cosmic-200 leading-relaxed">
                         具備 30 場以上法規宣導講師經歷與新聞稿撰寫能力；長照一線服務經驗磨練出卓越的情緒調適與高難度家庭協調能力。
                     </p>
                     <div class="mt-4 flex flex-wrap gap-1.5">
-                        <span id="skill3-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">法令宣導</span>
-                        <span id="skill3-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">新聞稿撰寫</span>
-                        <span id="skill3-tag3" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">危機協調</span>
+                        <span id="skill3-tag1" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">法令宣導</span>
+                        <span id="skill3-tag2" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">新聞稿撰寫</span>
+                        <span id="skill3-tag3" class="text-xs bg-cosmic-800 text-starlight-silver px-2 py-0.5 rounded border border-cosmic-700/50">危機協調</span>
                     </div>
                 </div>
             </div>
@@ -312,8 +834,8 @@
     <!-- 重要實績 (Selected Achievements) -->
     <section id="portfolio" class="py-16 max-w-4xl mx-auto px-6">
         <div class="flex items-center gap-2 mb-10">
-            <i data-lucide="check-square" class="w-6 h-6 text-starlight-gold"></i>
-            <h2 id="port-heading" contenteditable="false" class="text-2xl font-bold tracking-wider text-white">重要實績 | Selected Achievements</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-square" aria-hidden="true" class="lucide lucide-check-square w-6 h-6 text-starlight-gold"><path d="M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344"></path><path d="m9 11 3 3L22 4"></path></svg>
+            <h2 id="port-heading" class="text-2xl font-bold tracking-wider text-white">重要實績 | Selected Achievements</h2>
         </div>
 
         <div class="space-y-8">
@@ -322,24 +844,24 @@
                 <div class="p-6 md:w-2/3 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-2 text-xs font-semibold text-starlight-gold mb-2">
-                            <span id="port1-dept" contenteditable="false">內政部移民署</span>
+                            <span id="port1-dept">內政部移民署</span>
                             <span class="w-1 h-1 rounded-full bg-cosmic-800"></span>
-                            <span id="port1-category" contenteditable="false">人事實務</span>
+                            <span id="port1-category">人事實務</span>
                         </div>
-                        <h3 id="port1-title" contenteditable="false" class="text-xl font-bold text-white mb-3">招募與考核流程優化</h3>
-                        <p id="port1-desc" contenteditable="false" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
+                        <h3 id="port1-title" class="text-xl font-bold text-white mb-3">招募與考核流程優化</h3>
+                        <p id="port1-desc" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
                             主導 40 人編制年度考績，預先建立各職等考績比例框架、整合 4 個部門主管評比意見，將考績全流程縮短至 <strong>7 個工作天內零錯誤完成</strong>。獨立招募 16 名人員（職務代理人及臨時人員），關鍵職務首招即穩定留任，保證人力運作不斷鏈。
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span id="port1-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">7天高效考核</span>
-                        <span id="port1-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">100% 穩定留任</span>
+                        <span id="port1-tag1" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">7天高效考核</span>
+                        <span id="port1-tag2" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">100% 穩定留任</span>
                     </div>
                 </div>
                 <div class="bg-cosmic-900/65 md:w-1/3 p-6 flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-cosmic-800 text-center">
-                    <span id="port1-num-title" contenteditable="false" class="text-sm font-semibold text-cosmic-300 mb-1">年度考績協同</span>
-                    <span id="port1-num" contenteditable="false" class="text-4xl font-extrabold text-starlight-gold my-2">100%</span>
-                    <span id="port1-num-desc" contenteditable="false" class="text-xs text-cosmic-300">零補正、快速交付</span>
+                    <span id="port1-num-title" class="text-sm font-semibold text-cosmic-300 mb-1">年度考績協同</span>
+                    <span id="port1-num" class="text-4xl font-extrabold text-starlight-gold my-2">100%</span>
+                    <span id="port1-num-desc" class="text-xs text-cosmic-300">零補正、快速交付</span>
                 </div>
             </div>
 
@@ -348,24 +870,24 @@
                 <div class="p-6 md:w-2/3 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-2 text-xs font-semibold text-starlight-gold mb-2">
-                            <span id="port2-dept" contenteditable="false">內政部移民署</span>
+                            <span id="port2-dept">內政部移民署</span>
                             <span class="w-1 h-1 rounded-full bg-cosmic-800"></span>
-                            <span id="port2-category" contenteditable="false">差勤與福利</span>
+                            <span id="port2-category">差勤與福利</span>
                         </div>
-                        <h3 id="port2-title" contenteditable="false" class="text-xl font-bold text-white mb-3">雙班制精準差勤與主動關懷流程</h3>
-                        <p id="port2-desc" contenteditable="false" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
+                        <h3 id="port2-title" class="text-xl font-bold text-white mb-3">雙班制精準差勤與主動關懷流程</h3>
+                        <p id="port2-desc" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
                             統籌 40 人單位早晚雙班制排表，並建立系統化差勤與加班費報表。連續 6 年維持<strong>「零退件、零補正」</strong>優異紀錄。主動宣導並告知同仁各類福利申請時機，最大程度確保團隊員工權益不遺漏。
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span id="port2-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">連續 6 年零退件</span>
-                        <span id="port2-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">精準排班報支</span>
+                        <span id="port2-tag1" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">連續 6 年零退件</span>
+                        <span id="port2-tag2" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">精準排班報支</span>
                     </div>
                 </div>
                 <div class="bg-cosmic-900/65 md:w-1/3 p-6 flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-cosmic-800 text-center">
-                    <span id="port2-num-title" contenteditable="false" class="text-sm font-semibold text-cosmic-300 mb-1">差勤管理紀錄</span>
-                    <span id="port2-num" contenteditable="false" class="text-4xl font-extrabold text-starlight-gold my-2">0</span>
-                    <span id="port2-num-desc" contenteditable="false" class="text-xs text-cosmic-300">退件率與補正率</span>
+                    <span id="port2-num-title" class="text-sm font-semibold text-cosmic-300 mb-1">差勤管理紀錄</span>
+                    <span id="port2-num" class="text-4xl font-extrabold text-starlight-gold my-2">0</span>
+                    <span id="port2-num-desc" class="text-xs text-cosmic-300">退件率與補正率</span>
                 </div>
             </div>
 
@@ -374,24 +896,24 @@
                 <div class="p-6 md:w-2/3 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-2 text-xs font-semibold text-starlight-gold mb-2">
-                            <span id="port3-dept" contenteditable="false">跨界宣導與溝通</span>
+                            <span id="port3-dept">跨界宣導與溝通</span>
                             <span class="w-1 h-1 rounded-full bg-cosmic-800"></span>
-                            <span id="port3-category" contenteditable="false">公關與法規</span>
+                            <span id="port3-category">公關與法規</span>
                         </div>
-                        <h3 id="port3-title" contenteditable="false" class="text-xl font-bold text-white mb-3">法令宣導講師與新聞傳播</h3>
-                        <p id="port3-desc" contenteditable="false" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
+                        <h3 id="port3-title" class="text-xl font-bold text-white mb-3">法令宣導講師與新聞傳播</h3>
+                        <p id="port3-desc" class="text-sm text-cosmic-200 mb-4 leading-relaxed">
                             自主研讀複雜的新住民法令與法規，將其轉化為通俗易懂的口語內容。累計講授 <strong>30 場宣導活動</strong>，觸及人數超過 600 人次。在宣導後，獨立撰寫新聞稿並積極連蹟地方媒體進行刊登報導，大幅提升單位正面曝光度。
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span id="port3-tag1" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">累計 30 場講座</span>
-                        <span id="port3-tag2" contenteditable="false" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">公關新聞稿撰寫</span>
+                        <span id="port3-tag1" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">累計 30 場講座</span>
+                        <span id="port3-tag2" class="text-xs bg-cosmic-800 text-starlight-silver px-2.5 py-1 rounded border border-cosmic-700/45">公關新聞稿撰寫</span>
                     </div>
                 </div>
                 <div class="bg-cosmic-900/65 md:w-1/3 p-6 flex flex-col justify-center items-center border-t md:border-t-0 md:border-l border-cosmic-800 text-center">
-                    <span id="port3-num-title" contenteditable="false" class="text-sm font-semibold text-cosmic-300 mb-1">觸及對象</span>
-                    <span id="port3-num" contenteditable="false" class="text-4xl font-extrabold text-starlight-gold my-2">600+</span>
-                    <span id="port3-num-desc" contenteditable="false" class="text-xs text-cosmic-300">新住民與社群人次</span>
+                    <span id="port3-num-title" class="text-sm font-semibold text-cosmic-300 mb-1">觸及對象</span>
+                    <span id="port3-num" class="text-4xl font-extrabold text-starlight-gold my-2">600+</span>
+                    <span id="port3-num-desc" class="text-xs text-cosmic-300">新住民與社群人次</span>
                 </div>
             </div>
         </div>
@@ -401,45 +923,45 @@
     <section id="contact" class="py-16 bg-cosmic-900/30 border-t border-cosmic-800">
         <div class="max-w-4xl mx-auto px-6">
             <div class="flex items-center gap-2 mb-10">
-                <i data-lucide="mail" class="w-6 h-6 text-starlight-gold"></i>
-                <h2 id="contact-heading" contenteditable="false" class="text-2xl font-bold tracking-wider text-white">聯絡方式 | Get In Touch</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" aria-hidden="true" class="lucide lucide-mail w-6 h-6 text-starlight-gold"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
+                <h2 id="contact-heading" class="text-2xl font-bold tracking-wider text-white">聯絡方式 | Get In Touch</h2>
             </div>
 
             <div class="grid md:grid-cols-5 gap-8 items-start">
                 <!-- 聯絡管道資訊 -->
                 <div class="md:col-span-2 space-y-6">
-                    <p id="contact-desc" contenteditable="false" class="text-sm text-cosmic-200 leading-relaxed">
+                    <p id="contact-desc" class="text-sm text-cosmic-200 leading-relaxed">
                         目前我正在積極尋求鶯歌或桃園地區的人事相關工作。不論您需要的是制度導入、精準行政流程維護或是跨部門的協調，我都非常期待與您聊聊。
                     </p>
                     
                     <div class="space-y-4">
                         <a href="tel:0973467003" class="flex items-center gap-3 p-3 bg-cosmic-900/40 rounded-lg border border-cosmic-800 hover:border-starlight-gold/40 transition-colors group">
                             <div class="w-8 h-8 bg-cosmic-800 rounded-md flex items-center justify-center text-starlight-gold">
-                                <i data-lucide="phone" class="w-4 h-4"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" aria-hidden="true" class="lucide lucide-phone w-4 h-4"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
                             </div>
                             <div>
                                 <p class="text-xs text-cosmic-300">行動電話</p>
-                                <p id="contact-phone" contenteditable="false" class="text-sm font-semibold text-white group-hover:text-starlight-gold">0973-467-003</p>
+                                <p id="contact-phone" class="text-sm font-semibold text-white group-hover:text-starlight-gold">0973-467-003</p>
                             </div>
                         </a>
 
                         <a href="mailto:b95305019@gmail.com" class="flex items-center gap-3 p-3 bg-cosmic-900/40 rounded-lg border border-cosmic-800 hover:border-starlight-gold/40 transition-colors group">
                             <div class="w-8 h-8 bg-cosmic-800 rounded-md flex items-center justify-center text-starlight-gold">
-                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" aria-hidden="true" class="lucide lucide-mail w-4 h-4"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
                             </div>
                             <div>
                                 <p class="text-xs text-cosmic-300">電子郵件</p>
-                                <p id="contact-email" contenteditable="false" class="text-sm font-semibold text-white group-hover:text-starlight-gold">b95305019@gmail.com</p>
+                                <p id="contact-email" class="text-sm font-semibold text-white group-hover:text-starlight-gold">b95305019@gmail.com</p>
                             </div>
                         </a>
 
                         <div class="flex items-center gap-3 p-3 bg-cosmic-900/40 rounded-lg border border-cosmic-800">
                             <div class="w-8 h-8 bg-cosmic-800 rounded-md flex items-center justify-center text-starlight-gold">
-                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" aria-hidden="true" class="lucide lucide-map-pin w-4 h-4"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
                             </div>
                             <div>
                                 <p class="text-xs text-cosmic-300">通訊地址</p>
-                                <p id="contact-addr" contenteditable="false" class="text-sm font-semibold text-white">新北市鶯歌區永和街95號</p>
+                                <p id="contact-addr" class="text-sm font-semibold text-white">新北市鶯歌區永和街95號</p>
                             </div>
                         </div>
                     </div>
@@ -448,26 +970,26 @@
                 <!-- 快速聯絡表單 (對接 Google Apps Script)
                      【核心固化升級】：我們在這裡使用 data-gas-url 作為全自動固化容器 -->
                 <div class="md:col-span-3 bg-cosmic-900/40 backdrop-blur-sm p-6 rounded-xl border border-cosmic-800 shadow-lg">
-                    <h3 id="form-heading" contenteditable="false" class="font-bold text-white mb-4 text-base">留言給我</h3>
-                    <form id="contact-form" data-gas-url="" onsubmit="handleGasSubmit(event)" class="space-y-4">
+                    <h3 id="form-heading" class="font-bold text-white mb-4 text-base">留言給我</h3>
+                    <form id="contact-form" data-gas-url="https://script.google.com/macros/s/AKfycby63ucozQiZuxXr5W7R-yuPALySclEKbOcAXrHkLoWr7fIfuIZIIUqXxo2d6QL4BPv-/exec" onsubmit="handleGasSubmit(event)" class="space-y-4">
                         <div>
                             <label class="block text-xs font-semibold text-cosmic-200 mb-1">您的姓名 / 公司名稱</label>
-                            <input type="text" id="form-name" name="name" required class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold" placeholder="王小明 HR">
+                            <input type="text" id="form-name" name="name" required="" class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold" placeholder="王小明 HR">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-cosmic-200 mb-1">聯絡信箱 / 電話</label>
-                            <input type="text" id="form-contact" name="contact" required class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold" placeholder="example@mail.com / 0912-345678">
+                            <input type="text" id="form-contact" name="contact" required="" class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold" placeholder="example@mail.com / 0912-345678">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-cosmic-200 mb-1">想對我說的話</label>
-                            <textarea id="form-message" name="message" rows="3" required class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold animate-none" placeholder="哈囉凱群，我們對您的台大與移民署人事經驗非常有興趣..."></textarea>
+                            <textarea id="form-message" name="message" rows="3" required="" class="w-full px-3 py-2 bg-cosmic-950/60 border border-cosmic-800 rounded-md text-sm text-white focus:outline-none focus:ring-1 focus:ring-starlight-gold animate-none" placeholder="哈囉凱群，我們對您的台大與移民署人事經驗非常有興趣..."></textarea>
                         </div>
                         <button type="submit" id="submit-btn" class="w-full py-2 bg-starlight-gold text-cosmic-950 rounded-md text-sm font-extrabold hover:bg-opacity-90 transition-all flex items-center justify-center gap-2 shadow-md disabled:opacity-50">
-                            <i data-lucide="send" class="w-4 h-4"></i> <span id="submit-btn-text">傳送訊息</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="send" aria-hidden="true" class="lucide lucide-send w-4 h-4"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg> <span id="submit-btn-text">傳送訊息</span>
                         </button>
                     </form>
                     <div id="success-toast" class="hidden mt-4 p-3 bg-emerald-950/60 border border-emerald-900 text-emerald-300 text-xs rounded-md flex items-center gap-2">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i> <span id="success-toast-text">訊息已成功傳送至凱群的雲端資料庫！我會盡快與您聯絡。</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" aria-hidden="true" class="lucide lucide-check-circle w-4 h-4"><path d="M21.801 10A10 10 0 1 1 17 3.335"></path><path d="m9 11 3 3L22 4"></path></svg> <span id="success-toast-text">訊息已成功傳送至凱群的雲端資料庫！我會盡快與您聯絡。</span>
                     </div>
                 </div>
             </div>
@@ -477,8 +999,8 @@
     <!-- 頁尾 -->
     <footer class="bg-cosmic-950 text-cosmic-300 py-10 border-t border-cosmic-800">
         <div class="max-w-4xl mx-auto px-6 text-center space-y-3">
-            <p id="footer-name" contenteditable="false" class="text-sm font-bold text-white tracking-wider">黃凱群 Kai-Chun Huang</p>
-            <p id="footer-desc" contenteditable="false" class="text-xs text-cosmic-300/80">
+            <p id="footer-name" class="text-sm font-bold text-white tracking-wider">黃凱群 Kai-Chun Huang</p>
+            <p id="footer-desc" class="text-xs text-cosmic-300/80">
                 嚴謹、主動、數位驅動。致力為組織建立最穩定、最有效率的運作架構。
             </p>
             <p class="text-[10px] text-cosmic-300/50 pt-4">
@@ -488,10 +1010,7 @@
     </footer>
 
     <!-- 自訂通知 Toast -->
-    <div id="custom-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 hidden bg-cosmic-900 text-white text-xs sm:text-sm px-4 py-3 rounded-xl shadow-2xl border border-cosmic-800 items-center gap-2">
-        <i data-lucide="info" class="w-4 h-4 text-starlight-gold"></i>
-        <span id="toast-message"></span>
-    </div>
+    
 
     <!-- 核心 JS 引擎 -->
     <script>
@@ -897,5 +1416,5 @@
             });
         }
     </script>
-</body>
-</html>
+
+</body></html>
