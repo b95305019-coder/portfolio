@@ -3,108 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黃凱群 - 個人簡歷</title>
+    <title>黃凱群 | 個人首頁</title>
+    <!-- 引入 Tailwind CSS 用於現代化排版與 RWD 支援 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { 
-            background-color: #FAF3E0; /* 沙灘暖色 */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            color: #5D4037; /* 大地深棕色 */
+        /* 載入優質繁體中文與無襯線字體，確保跨平台閱讀體驗一致 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FDF2E2; /* 溫暖米色底 [Page_Base] */
+            color: #4A3E3D; /* 深焦糖灰文字 */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 優雅的客製化虛線裝飾線 */
+        .decorative-line {
+            border-top: 2px dashed #E5D5C5;
+            width: 100%;
+            max-width: 160px;
+            margin: 1rem auto;
+        }
+
+        /* 互動卡片點擊與懸停過渡 */
+        .interactive-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .interactive-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px -8px rgba(139, 94, 60, 0.18);
         }
     </style>
 </head>
-<body class="text-stone-800">
+<body class="min-h-screen py-10 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 
-    <div class="max-w-3xl mx-auto px-6 py-12">
-        
-        <!-- Header -->
-        <header class="text-center mb-16">
-            <div class="w-36 h-36 mx-auto bg-orange-100 rounded-full mb-6 overflow-hidden border-4 border-white shadow-xl">
-                <img src="image/aboutme.png" alt="黃凱群" class="w-full h-full object-cover" style="object-position: 50% 20%;">
+    <!-- [00] Page_Base 全域容器限制最大寬度以維持優雅排版 -->
+    <div class="w-full max-w-2xl mx-auto space-y-10">
+
+        <!-- [10] Profile_Header: 個人頭像與標題區 -->
+        <header class="text-center space-y-3">
+            <!-- Profile_Photo: 圓形頭像 -->
+            <div class="relative w-24 h-24 mx-auto rounded-full overflow-hidden border-4 border-white shadow-sm bg-amber-100 flex items-center justify-center">
+                <!-- 內嵌精緻向量男士人像 SVG -->
+                <svg class="w-16 h-16 text-amber-800/50" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
             </div>
-            <h1 class="text-4xl font-bold mb-2 text-[#D35400]">黃凱群</h1>
-            <p class="text-xl opacity-90">十年公部門人事資歷，專注於高效招募與精準薪酬考核的 HR 專業人員。</p>
+            
+            <!-- Profile_Name & Profile_Title -->
+            <div class="space-y-2">
+                <h1 class="text-2xl font-bold tracking-widest text-amber-900">黃凱群</h1>
+                <p class="text-xs text-amber-800/90 font-medium max-w-md mx-auto leading-relaxed px-4">
+                    誠實為本、同理傾聽；溫慢連結人與制度，致力成為組織中最令人安心的後盾。
+                </p>
+            </div>
         </header>
 
-        <!-- 關於我 -->
-        <section class="mb-16 bg-white/50 p-8 rounded-3xl shadow-inner border border-white">
-            <h2 class="text-2xl font-bold mb-4 border-b-2 border-orange-200 pb-2 text-[#D35400]">關於我</h2>
-            <p class="leading-relaxed">
-                國立臺灣大學社會學系畢業，曾於內政部移民署擔任公職近十年，具備紮實的人事法規基礎與大型單位管理經驗。我擅長透過數位化工具優化行政效率，曾主導編制 40 人的年度考績與差勤作業，秉持「嚴謹數據、主動服務」的核心價值，致力於為企業創造順暢的人才運作環境。
+
+        <!-- [20] Intro_Section: 個人簡介區 -->
+        <section class="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-amber-200/40 shadow-sm text-center">
+            <!-- About_Me_Title: 點擊在新分頁直接線上預覽 PDF -->
+            <h2 class="text-base font-bold text-amber-900 tracking-widest">
+                <a href="https://b95305019-coder.github.io/portfolio/%E9%BB%83%E5%87%B1%E7%BE%A4_%E4%B9%9D%E5%A4%A7%E8%81%B7%E8%83%BD%E6%98%9F%E5%A0%B1%E5%91%8A%E5%88%97%E5%8D%B0.pdf" 
+                   target="_blank" 
+                   title="點擊在新分頁直接線上預覽「九大職能星」分析報告"
+                   class="hover:text-amber-700 hover:underline inline-flex items-center gap-1.5 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 rounded px-1">
+                    關於我
+                    <!-- 外部連結小圖標 -->
+                    <svg class="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                    </svg>
+                </a>
+            </h2>
+            <div class="decorative-line"></div>
+            <p class="text-xs leading-relaxed text-slate-700 max-w-lg mx-auto text-justify">
+                在官方九大職能評估中，我展現了顯著的<strong class="text-amber-900 font-bold">火星社會型（86%）</strong>與<strong class="text-amber-900 font-bold">土星應用型（71%）</strong>雙重特質。這使我天生具備高度的<strong class="text-amber-950 font-bold">溝通協調（88%）</strong>與<strong class="text-amber-950 font-bold">同理關懷（81%）</strong>，能敏銳察獲組織成員的需求並達成跨部門共識。面對繁重的工作挑戰，我以極強的<strong class="text-amber-950 font-bold">抗壓能力（94%）</strong>與靈活的<strong class="text-amber-950 font-bold">執行力（88%）</strong>，搭配嚴謹的<strong class="text-amber-950 font-bold">分析思考（81%）</strong>，確保每次人事考核與差報統計皆能「零退件、零錯誤」精準送達。我致力於將這份溫暖關懷與數據理性並重的特質，轉化為組織最穩健的治理後盾。
             </p>
         </section>
 
-        <!-- 核心技能 -->
-        <section class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 border-b-2 border-orange-200 pb-2 text-[#D35400]">核心技能</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-6 bg-[#FDF6E3] rounded-2xl shadow-md border border-orange-100">
-                    <h3 class="font-bold text-lg mb-2">人力資源管理</h3>
-                    <p class="text-sm opacity-80">招募流程規劃、人才考核體系建立。</p>
+
+        <!-- [30] Skills_Section: 核心技能區 -->
+        <section class="space-y-4">
+            <div class="text-center">
+                <h2 class="text-base font-bold text-amber-900 tracking-widest">核心技能</h2>
+                <div class="decorative-line"></div>
+                <p class="text-[10px] text-amber-800/60 -mt-1 font-medium">💡 點擊下方任一卡片可展開檢視實務量化指標與背景證實</p>
+            </div>
+
+            <!-- 三欄響應式網格 -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Skill_Item_1: 人事與行政管理 -->
+                <button onclick="toggleAchievements(1)" id="skillCard1" class="interactive-card text-left bg-white rounded-2xl p-5 border border-amber-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 relative group">
+                    <span class="absolute top-3 right-3 flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                    </span>
+                    <h3 class="font-bold text-amber-950 text-sm mb-1.5 flex items-center gap-1">
+                        人事與行政管理
+                    </h3>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                        組織架構規劃、人力稽核與系統性績效考評。
+                    </p>
+                </button>
+
+                <!-- Skill_Item_2: 跨界溝通與關係協調 -->
+                <button onclick="toggleAchievements(2)" id="skillCard2" class="interactive-card text-left bg-white rounded-2xl p-5 border border-amber-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 relative group">
+                    <span class="absolute top-3 right-3 flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                    </span>
+                    <h3 class="font-bold text-amber-950 text-sm mb-1.5 flex items-center gap-1">
+                        跨界溝通與關係協調
+                    </h3>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                        結合社會學思維與高張力衝突調解，落實溫暖與專業。
+                    </p>
+                </button>
+
+                <!-- Skill_Item_3: 數位與辦公 AI 應用 -->
+                <button onclick="toggleAchievements(3)" id="skillCard3" class="interactive-card text-left bg-white rounded-2xl p-5 border border-amber-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-500 relative group">
+                    <span class="absolute top-3 right-3 flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                    </span>
+                    <h3 class="font-bold text-amber-950 text-sm mb-1.5 flex items-center gap-1">
+                        數位與辦公 AI 應用
+                    </h3>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">
+                        熟練 MS Office 與 AI 輔助系統，自動化繁瑣行政流程。
+                    </p>
+                </button>
+            </div>
+
+            <!-- [面板 1] 人事與行政管理核心成就 -->
+            <div id="achievementBox1" class="hidden transform scale-95 opacity-0 transition-all duration-300 ease-out bg-amber-50/80 border-2 border-amber-300 rounded-2xl p-5 sm:p-6 shadow-inner mt-3">
+                <div class="flex justify-between items-center mb-3">
+                    <h4 class="text-xs font-bold text-amber-950 flex items-center gap-1.5">
+                        <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                        人事與行政管理 · 核心成就績效
+                    </h4>
+                    <button onclick="toggleAchievements(1)" class="text-amber-800 hover:text-amber-950 text-xs font-semibold">
+                        關閉 ✕
+                    </button>
                 </div>
-                <div class="p-6 bg-[#FDF6E3] rounded-2xl shadow-md border border-orange-100">
-                    <h3 class="font-bold text-lg mb-2">數位辦公與 AI 應用</h3>
-                    <p class="text-sm opacity-80">熟練 MS Office 與 AI 提升效率。</p>
+                <ol class="space-y-3 text-[11px] sm:text-xs text-slate-700 list-decimal pl-4 leading-relaxed">
+                    <li>主導 <strong class="text-amber-950 font-bold">40人編制</strong> 年度考績全流程，預建各職等比例框架供 4 位部門主管決策， 7 天內完成統整呈報，連續 <strong class="text-amber-950 font-bold">6 年零錯誤、零退件</strong>。</li>
+                    <li>統籌 <strong class="text-amber-950 font-bold">40人雙班制</strong> 差勤與加班費報表作業，系統化執行逾 6 年，零退件、零補正，並主動告知同仁各項福利申請時機。</li>
+                    <li>獨立執行招募端到端流程，歷年完成逾 <strong class="text-amber-950 font-bold">16 名</strong> 人員招募（臨時人員＋職務代理人）， 2 個核心職缺首次招募即長期穩定留任。</li>
+                    <li>擔任新住民法令宣導講師，自主研讀法規並轉化為易懂口語，累計執行 <strong class="text-amber-950 font-bold">30 場、觸及逾 600 人次</strong>，課後獨立撰寫新聞稿聯繫媒體刊登。</li>
+                    <li>管理 <strong class="text-amber-950 font-bold">40 名編制人員</strong> 終身學習課程及新進人員實習安排，確保訓練計畫準時執行。</li>
+                </ol>
+            </div>
+
+            <!-- [面板 2] 跨界溝通與關係協調深度優勢 -->
+            <div id="achievementBox2" class="hidden transform scale-95 opacity-0 transition-all duration-300 ease-out bg-amber-50/80 border-2 border-amber-300 rounded-2xl p-5 sm:p-6 shadow-inner mt-3">
+                <div class="flex justify-between items-center mb-3">
+                    <h4 class="text-xs font-bold text-amber-950 flex items-center gap-1.5">
+                        <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                        跨界溝通與關係協調 · 衝突調解與多元對接指標
+                    </h4>
+                    <button onclick="toggleAchievements(2)" class="text-amber-800 hover:text-amber-950 text-xs font-semibold">
+                        關閉 ✕
+                    </button>
                 </div>
-                <div class="p-6 bg-[#FDF6E3] rounded-2xl shadow-md border border-orange-100">
-                    <h3 class="font-bold text-lg mb-2">跨部門協調</h3>
-                    <p class="text-sm opacity-80">善於溝通並完成決策交付。</p>
+                <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 list-disc pl-4 leading-relaxed text-justify">
+                    <li><strong class="text-amber-950 font-bold">跨文化法規宣導與轉譯力</strong>：曾擔任公部門新住民法規宣導講師，獨立研讀繁複移民法規並成功轉化為平易近人的口語，累計主講 <strong class="text-amber-950 font-bold">30 場</strong>，精準輔導影響逾 <strong class="text-amber-950 font-bold">600 人次</strong>。</li>
+                    <li><strong class="text-amber-950 font-bold">高難度家庭情感與衝突調和</strong>：於長照一線（居服員）獨立服務多位高需求失智、臥床個案。在充滿家庭情感拉扯、期待分歧的「高張力高壓情境」下，展現極強同理心與協調技巧，穩妥達成多方滿意的照護共識。</li>
+                    <li><strong class="text-amber-950 font-bold">獨立媒體公關與宣傳企劃</strong>：具備獨立撰寫公務新聞稿、主動對接外部媒體發佈新聞之經驗。具備多管道行政資料整合與對外公關溝通實務，維護組織外部形象。</li>
+                    <li><strong class="text-amber-950 font-bold">臺大社會學底蘊與 DEI 多元視野</strong>：國立臺灣大學社會學系專業養成，具備嚴謹的批判思考、宏觀結構分析，能敏銳察覺多族群工作環境中的潛在需求，契合現代企業 ESG 核心精神。</li>
+                    <li><strong class="text-amber-950 font-bold">跨語群與多背景人員維護潛力</strong>：具備泰語（中等閱讀）、台語溝通基礎，能遊刃有餘地與多元文化同仁、勞工及外部機關順暢溝通。</li>
+                </ul>
+            </div>
+
+            <!-- [面板 3] 數位與辦公 AI 應用養成績效 -->
+            <div id="achievementBox3" class="hidden transform scale-95 opacity-0 transition-all duration-300 ease-out bg-amber-50/80 border-2 border-amber-300 rounded-2xl p-5 sm:p-6 shadow-inner mt-3">
+                <div class="flex justify-between items-center mb-3">
+                    <h4 class="text-xs font-bold text-amber-950 flex items-center gap-1.5">
+                        <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                        數位與辦公 AI 應用 · 400小時高強度實戰指標
+                    </h4>
+                    <button onclick="toggleAchievements(3)" class="text-amber-800 hover:text-amber-950 text-xs font-semibold">
+                        關閉 ✕
+                    </button>
                 </div>
+                <ul class="space-y-3 text-[11px] sm:text-xs text-slate-700 list-disc pl-4 leading-relaxed text-justify">
+                    <li><strong class="text-amber-950 font-bold">400 小時全日制數位核心訓練</strong>：於 115 年 3 月至 6 月間順利完成資訊類職業訓練養成，全面掌握生成式 AI 輔助流程、大數據分析與商業自動化。</li>
+                    <li><strong class="text-amber-950 font-bold">行政流程自動化開發 (VBA / Apps Script)</strong>：精通 Excel VBA 商業自動化及 Google Apps Script 跨服務串接，能自主將「行政自動化與費用審核」開發為無人值守工作流。</li>
+                    <li><strong class="text-amber-950 font-bold">商業大數據視覺化決策 (Power BI)</strong>：熟練 Power BI 大數據視覺化與決策分析，能對多源雜亂數據進行數據清洗、進階樞紐分析，建立直觀且具商業洞察價值的動態儀表板。</li>
+                    <li><strong class="text-amber-950 font-bold">生成式 AI 工作流深度整合 (RAG & Prompting)</strong>：掌握 RAG（檢索增強生成）流程自動化原理，精通高精度提示詞精修（Prompt Engineering），實踐高效的 AI 文案生成與競爭分析。</li>
+                    <li><strong class="text-amber-950 font-bold">MOS 微軟國際專業三認證培訓</strong>：完成微軟 MOS 365 國際認證（Excel、Word、PowerPoint）訓練，具備國際標準的進階數據統計、精準商業排版與互動簡報實務實戰力。</li>
+                </ul>
             </div>
         </section>
 
-        <!-- 作品與證照 -->
-        <section class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 border-b-2 border-orange-200 pb-2 text-[#D35400]">
-                <a href="https://b95305019-coder.github.io/portfolio/specialty" class="hover:underline transition duration-300">作品與證照</a>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- 專案 1: 究極貪食蛇 -->
-                <a href="https://b95305019-coder.github.io/snake/" target="_blank" class="bg-white p-4 rounded-2xl shadow-md border border-orange-100 transition hover:-translate-y-1 duration-300">
-                    <img src="/portfolio/image/snake2.png" alt="究極貪食蛇" class="rounded-lg mb-4 w-full h-40 object-cover">
-                    <h3 class="font-bold text-lg text-[#D35400]">究極貪食蛇</h3>
-                    <p class="text-sm opacity-80 mt-1">一款支援穿透、迷宮與多種難度模式的現代化貪食蛇遊戲。</p>
+
+        <!-- [40] Portfolio_Section: 我的專案作品 -->
+        <section class="space-y-4">
+            <div class="text-center">
+                <h2 class="text-base font-bold text-amber-900 tracking-widest">我的專案作品</h2>
+                <div class="decorative-line"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Project 1: 魔法大師 V66 - AI 國小生字即時鑑定系統 (已完美套用 GitHub Pages 靜態預覽路徑並重繪圖章) -->
+                <a href="https://b95305019-coder.github.io/portfolio/magic.html" target="_blank" class="bg-white rounded-2xl overflow-hidden border border-amber-300 shadow-sm flex flex-col hover:shadow-md transition-shadow group">
+                    <div class="h-28 bg-amber-50 flex items-center justify-center p-3 border-b border-amber-100 relative overflow-hidden">
+                        <!-- 為 AI 鑑定主題特製的科技魔法向量 SVG 佔位圖 -->
+                        <svg class="w-full h-full text-amber-700/20 group-hover:scale-105 transition-transform duration-300" viewBox="0 0 100 60" fill="none" stroke="currentColor">
+                            <!-- 模擬相機辨識掃描框 -->
+                            <rect x="15" y="10" width="70" height="40" rx="6" stroke-width="2" stroke-dasharray="3 3"/>
+                            <!-- 魔法帽幾何線條 -->
+                            <path d="M50 15 L32 38 L68 38 Z" stroke-width="2" fill="none"/>
+                            <path d="M28 38 L72 38 C72 38 74 41 50 41 C26 41 28 38 28 38 Z" stroke-dasharray="1 1" stroke-width="1.5"/>
+                            <!-- 辨識判定成功的 ✅ 圖案 -->
+                            <circle cx="50" cy="30" r="10" stroke-width="1.5" stroke="rgba(217, 119, 6, 0.4)"/>
+                            <path d="M46 30 L49 33 L55 27" stroke-width="2" stroke="rgba(217, 119, 6, 0.7)"/>
+                            <!-- 閃爍亮點 -->
+                            <circle cx="25" cy="20" r="1" fill="currentColor"/>
+                            <circle cx="75" cy="40" r="1.5" fill="currentColor"/>
+                        </svg>
+                        <!-- 卡片右上角提示亮點 -->
+                        <span class="absolute top-2 right-2 bg-amber-500 text-[8px] text-white font-bold px-1.5 py-0.5 rounded-full">AI 應用</span>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-amber-950 text-xs group-hover:text-amber-700 transition-colors">魔法大師 V66：AI 生字鑑定</h3>
+                            <p class="text-[10px] text-slate-500 mt-1 leading-relaxed text-justify">
+                                整合 Gemini 2.5 多模態視覺模型，開發相機動態拍照與高精準手寫 OCR 鑑定系統，將繁瑣的聽寫複習轉化為精靈收集的遊戲化體驗。
+                            </p>
+                        </div>
+                        <span class="text-[10px] font-bold text-amber-800 mt-3 inline-block">開啟即時挑戰 ➔</span>
+                    </div>
                 </a>
-                <!-- 專案 2 -->
-                <div class="bg-white p-4 rounded-2xl shadow-md border border-orange-100 transition hover:-translate-y-1 duration-300">
-                    <img src="https://placehold.co/400x250/FDF6E3/5D4037?text=Project+2" alt="作品 2" class="rounded-lg mb-4 w-full h-40 object-cover">
-                    <h3 class="font-bold text-lg text-[#D35400]">專案名稱 2</h3>
-                    <p class="text-sm opacity-80 mt-1">簡述專案內容或您的貢獻。</p>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-amber-200/40 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+                    <div class="h-28 bg-amber-50 flex items-center justify-center p-3 border-b border-amber-100">
+                        <svg class="w-8 h-8 text-amber-700/10" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-amber-950 text-xs">專案名稱 2</h3>
+                            <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
+                                歷年考評及專案核心之分析。
+                            </p>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 mt-3 inline-block">詳細資訊 ➔</span>
+                    </div>
                 </div>
-                <!-- 專案 3 -->
-                <div class="bg-white p-4 rounded-2xl shadow-md border border-orange-100 transition hover:-translate-y-1 duration-300">
-                    <img src="https://placehold.co/400x250/FDF6E3/5D4037?text=Project+3" alt="作品 3" class="rounded-lg mb-4 w-full h-40 object-cover">
-                    <h3 class="font-bold text-lg text-[#D35400]">專案名稱 3</h3>
-                    <p class="text-sm opacity-80 mt-1">簡述專案內容或您的貢獻。</p>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-amber-200/40 shadow-sm flex flex-col hover:shadow-md transition-shadow">
+                    <div class="h-28 bg-amber-50 flex items-center justify-center p-3 border-b border-amber-100">
+                        <svg class="w-8 h-8 text-amber-700/10" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-amber-950 text-xs">專案名稱 3</h3>
+                            <p class="text-[10px] text-slate-500 mt-1 leading-relaxed">
+                                歷年考評及專案核心之分析。
+                            </p>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 mt-3 inline-block">詳細資訊 ➔</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 職務亮點 -->
-        <section class="mb-16">
-            <h2 class="text-2xl font-bold mb-6 border-b-2 border-orange-200 pb-2 text-[#D35400]">職務亮點</h2>
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-orange-100">
-                    <h3 class="font-bold text-lg text-[#D35400]">人事考核效率優化</h3>
-                    <p class="mt-2 opacity-90">將年度考績流程縮短至 7 個工作天，並達成連續 6 年零錯誤。</p>
+
+        <!-- [50] WorkEx_Section: 職涯亮點 -->
+        <section class="bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-amber-200/40 shadow-sm space-y-4">
+            <div class="text-center">
+                <h2 class="text-base font-bold text-amber-900 tracking-widest">職涯亮點</h2>
+                <div class="decorative-line"></div>
+            </div>
+
+            <div class="space-y-4 divide-y divide-amber-100">
+                <div class="pt-0 first:pt-0 space-y-1">
+                    <h3 class="font-bold text-amber-950 text-xs">人事考核效率優化</h3>
+                    <p class="text-[11px] text-slate-600 leading-relaxed text-justify">
+                        將年度考績流程整合，7天內完成統整呈報，維持極高行政敏捷度。
+                    </p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-orange-100">
-                    <h3 class="font-bold text-lg text-[#D35400]">精準人力招募</h3>
-                    <p class="mt-2 opacity-90">累積逾 16 名人員招募實績，確保人力配置目標達成。</p>
+
+                <div class="pt-4 space-y-1">
+                    <h3 class="font-bold text-amber-950 text-xs">精準人力招募</h3>
+                    <p class="text-[11px] text-slate-600 leading-relaxed text-justify">
+                        主導 16 名人員招募，包含臨時與職務代理人員，保障核心人力資源高留任率。
+                    </p>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-orange-100">
-                    <h3 class="font-bold text-lg text-[#D35400]">教育訓練與媒體溝通</h3>
-                    <p class="mt-2 opacity-90">擔任法令宣導講師，累計觸及逾 600 人次。</p>
+
+                <div class="pt-4 space-y-1">
+                    <h3 class="font-bold text-amber-950 text-xs">教育訓練與媒體溝通</h3>
+                    <p class="text-[11px] text-slate-600 leading-relaxed text-justify">
+                        獨立策劃新住民法令宣導，累計授課 30 場、觸及逾 600人次，課後獨立與媒體協調報導。
+                    </p>
                 </div>
             </div>
         </section>
 
-        <footer class="text-center pt-8 border-t-2 border-orange-200">
-            <h2 class="text-xl font-bold mb-4 text-[#D35400]">聯絡方式</h2>
-            <p class="mb-2">手機：0973-467-003</p>
-            <p>Email：<a href="mailto:b95305019@gmail.com" class="text-[#D35400] underline font-semibold">b95305019@gmail.com</a></p>
+
+        <!-- [60] Contact_Section: 聯絡方式區 -->
+        <footer class="text-center space-y-3 pt-2">
+            <h2 class="text-base font-bold text-amber-900 tracking-widest">聯絡方式</h2>
+            <div class="decorative-line"></div>
+            
+            <div class="text-xs space-y-1.5 text-slate-700">
+                <p class="font-medium">手機：<span class="text-amber-900 font-bold select-all">0970-467-003</span></p>
+                <p class="font-medium">Email：<a href="mailto:b95305019@gmail.com" class="text-amber-800 hover:text-amber-950 underline transition-all">b95305019@gmail.com</a></p>
+            </div>
         </footer>
+
     </div>
 
+    <!-- 前端互動 Javascript 邏輯控制 -->
+    <script>
+        function toggleAchievements(targetId) {
+            const box1 = document.getElementById('achievementBox1');
+            const box2 = document.getElementById('achievementBox2');
+            const box3 = document.getElementById('achievementBox3');
+            const card1 = document.getElementById('skillCard1');
+            const card2 = document.getElementById('skillCard2');
+            const card3 = document.getElementById('skillCard3');
+
+            // 輔助函式：優雅關閉指定的面板
+            function closePanel(box, card) {
+                if (box && !box.classList.contains('hidden')) {
+                    box.classList.remove('scale-100', 'opacity-100');
+                    box.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => { box.classList.add('hidden'); }, 300);
+                    card.classList.remove('border-amber-500', 'ring-2', 'ring-amber-400', 'bg-amber-50/50');
+                }
+            }
+
+            // 輔助函式：優雅開啟指定的面板
+            function openPanel(box, card) {
+                if (box && box.classList.contains('hidden')) {
+                    box.classList.remove('hidden');
+                    setTimeout(() => {
+                        box.classList.remove('scale-95', 'opacity-0');
+                        box.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    card.classList.add('border-amber-500', 'ring-2', 'ring-amber-400', 'bg-amber-50/50');
+                }
+            }
+
+            if (targetId === 1) {
+                // 關閉其他兩個
+                closePanel(box2, card2);
+                closePanel(box3, card3);
+                // 切換面板 1
+                if (box1.classList.contains('hidden')) {
+                    openPanel(box1, card1);
+                } else {
+                    closePanel(box1, card1);
+                }
+            } else if (targetId === 2) {
+                // 關閉其他兩個
+                closePanel(box1, card1);
+                closePanel(box3, card3);
+                // 切換面板 2
+                if (box2.classList.contains('hidden')) {
+                    openPanel(box2, card2);
+                } else {
+                    closePanel(box2, card2);
+                }
+            } else if (targetId === 3) {
+                // 關閉其他兩個
+                closePanel(box1, card1);
+                closePanel(box2, card2);
+                // 切換面板 3
+                if (box3.classList.contains('hidden')) {
+                    openPanel(box3, card3);
+                } else {
+                    closePanel(box3, card3);
+                }
+            }
+        }
+    </script>
 </body>
 </html>
