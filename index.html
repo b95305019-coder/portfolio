@@ -43,12 +43,14 @@
         <!-- [10] Profile_Header: 個人頭像與標題區 -->
         <header class="text-center space-y-3">
             
-            <!-- 將 w-24 h-24 改為 w-32 h-32 或您所需的尺寸 -->
-<div class="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white shadow-sm bg-amber-100 flex items-center justify-center">
-    <!-- 圖片會自動隨外框尺寸調整 -->
-    <img src="image/aboutme.png" onerror="this.src='image/me01.jpg'" alt="黃凱群" class="w-full h-full object-cover">
-</div>
+                        
+            <!-- Profile_Photo: 圓形頭像 -->
+            <div class="relative w-24 h-24 mx-auto rounded-full overflow-hidden border-4 border-white shadow-sm bg-amber-100 flex items-center justify-center">
+                <!-- 使用真實個人照片 aboutme.png，並加上大小寫與副檔名相容防錯機制 -->
+                <img src="" onerror="this.src='image/aboutme.jpg'" alt="黃凱群" class="w-full h-full object-cover">
+            </div>
             
+          
 
             
             <!-- Profile_Name & Profile_Title -->
