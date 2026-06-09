@@ -1,0 +1,552 @@
+!DOCTYPE html
+html lang=zh-TW
+head
+    meta charset=UTF-8
+    meta name=viewport content=width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover
+    title魔法大師 V66 - Gemini 2.5 即時鑑定title
+    script src=httpscdn.jsdelivr.netnpmcanvas-confetti@1.6.0distconfetti.browser.min.jsscript
+    style
+        root { --m-purple #1A1A2E; --m-gold #FFD700; --m-blue #00D2FF; --m-deep #16213E; --m-red #FF3B30; --m-parchment #fdf5e6; }
+        body { font-family -apple-system, Microsoft JhengHei, sans-serif; margin 0; background var(--m-purple); color white; overflow-x hidden; -webkit-tap-highlight-color transparent; }
+        .page { display none; padding 20px; box-sizing border-box; min-height 100dvh; flex-direction column; }
+        .page.active { display flex; }
+        .wizard-icon { font-size 60px; text-align center; margin 10px 0; filter drop-shadow(0 0 10px var(--m-blue)); animation float 3s infinite; }
+        .energy-bar { background rgba(255,255,255,0.1); border-radius 10px; padding 10px; margin 10px 0; font-size 14px; border-left 5px solid var(--m-gold); }
+        .magic-card { background var(--m-parchment); color #333; border-radius 20px; padding 20px; text-align center; border 5px solid var(--m-blue); box-shadow 0 0 20px var(--m-blue); position relative; display flex; align-items center; justify-content center; flex-direction column; min-height 120px; }
+        .word-display { font-size 65px; font-weight 900; letter-spacing 8px; color #222; }
+        .tome-grid { display grid; grid-template-columns repeat(4, 1fr); gap 10px; overflow-y auto; flex-grow 1; padding 10px; background rgba(0,0,0,0.2); border-radius 15px; }
+        .scroll-icon { background rgba(255,255,255,0.08); border 1px solid var(--m-gold); border-radius 10px; padding 10px 5px; text-align center; font-size 9px; min-height 70px; display flex; flex-direction column; align-items center; justify-content center; }
+        .scroll-icon b { margin-top 5px; color var(--m-gold); display block; width 100%; text-overflow ellipsis; overflow hidden; white-space nowrap; }
+        .sprite-icon { background rgba(255,255,255,0.08); border 1px solid var(--m-gold); border-radius 10px; padding 6px 4px; text-align center; font-size 8px; min-height 70px; display flex; flex-direction column; align-items center; justify-content center; transition transform 0.2s; }
+        .sprite-icon.owned { background rgba(255,215,0,0.12); border-color var(--m-gold); box-shadow 0 0 8px rgba(255,215,0,0.3); }
+        .sprite-icon .sprite-emoji { font-size 26px; line-height 1; }
+        .sprite-icon .sprite-name { margin-top 4px; color var(--m-gold); display block; width 100%; text-overflow ellipsis; overflow hidden; white-space nowrap; font-size 8px; font-weight bold; }
+        .sprite-icon.owned .sprite-emoji { animation float 3s infinite; }
+        @keyframes sparkle { 0%,100%{filterdrop-shadow(0 0 2px gold)} 50%{filterdrop-shadow(0 0 8px gold)} }
+
+         相機 
+        .camera-container { position relative; width 100%; height 260px; background #000; border-radius 20px; overflow hidden; margin 15px 0; border 2px solid var(--m-blue); }
+        #video { width 100%; height 100%; object-fit cover; }
+        .viewfinder { position absolute; top 50%; left 50%; transform translate(-50%, -50%); width 85%; height 120px; border 3px solid var(--m-gold); border-radius 10px; box-shadow 0 0 0 1000px rgba(0,0,0,0.5); pointer-events none; }
+        .flash { position absolute; top0; left0; width100%; height100%; backgroundwhite; opacity0; pointer-eventsnone; border-radius18px; transition opacity 0.05s; }
+
+        .btn { padding 15px; border-radius 15px; border none; font-size 18px; font-weight bold; cursor pointer; margin 5px 0; width 100%; text-align center; display block; box-sizing border-box; }
+        .btn-gold { background linear-gradient(45deg, var(--m-gold), #FFA500); color black !important; }
+        .btn-outline { background transparent; border 2px solid var(--m-blue); color white !important; }
+
+        .loader { position fixed; top 0; left 0; width 100%; height 100%; background rgba(0,0,0,0.9); z-index 5000; display none; flex-direction column; align-items center; justify-content center; }
+        #zoom-modal { position fixed; top0; left0; width100%; height100%; backgroundrgba(0,0,0,0.95); z-index 9999; displaynone; align-itemscenter; justify-contentcenter; }
+        #zoom-modal img { max-width 95%; max-height 85%; border 2px solid white; }
+        @keyframes float { 0%, 100% { transform translateY(0); } 50% { transform translateY(-15px); } }
+        @keyframes spin { to { transform rotate(360deg); } }
+
+         縮圖列 
+        .thumb-strip { display flex; gap 6px; overflow-x auto; padding 6px 0; min-height 44px; }
+        .thumb-strip img { width 60px; height 32px; object-fit cover; border-radius 6px; border 2px solid rgba(255,215,0,0.4); flex-shrink 0; cursor pointer; }
+        .thumb-strip img.captured { border-color var(--m-gold); }
+
+         鑑定結果列 
+        .result-row { display flex; align-items center; gap 10px; padding 10px; border-radius 12px; margin-bottom 8px; background rgba(255,255,255,0.07); border-left 4px solid rgba(255,255,255,0.2); }
+        .result-row img { width 72px; height 36px; object-fit cover; border-radius 6px; border 1px solid var(--m-gold); cursor pointer; flex-shrink 0; }
+        .result-row .rword { font-size 18px; font-weight bold; flex 1; }
+        .result-row .verdict { font-size 22px; flex-shrink 0; }
+        .result-list { overflow-y auto; flex-grow 1; }
+        .manual-btn { font-size 11px; padding 4px 8px; border-radius 8px; border 1px solid var(--m-blue); background transparent; color white; cursor pointer; flex-shrink 0; }
+    style
+head
+body
+
+div id=zoom-modal onclick=this.style.display='none'img id=zoom-img src=div
+
+div id=loader class=loader
+    div style=border 4px solid #333; border-top 4px solid var(--m-gold); width 40px; height 40px; border-radius 50%; animation spin 1s linear infinite;div
+    p id=loader-text style=margin-top15px; colorvar(--m-gold); font-weightbold; text-aligncenter; padding0 20px; line-height1.6;🔍 Gemini 2.5 鑑定中...p
+div
+
+!-- 1. 登入 --
+div id=page-intro class=page active
+    div class=wizard-icon🧙‍♂️div
+    h2 style=text-aligncenter; colorvar(--m-gold); margin0;真理之書：即時鑑定 V66h2
+    div style=backgroundrgba(255,255,255,0.1); padding15px; border-radius10px; margin20px 0;
+        p style=font-size12px; margin0 0 8px 0; colorvar(--m-blue);🔑 請輸入您的 Gemini API Key：p
+        input type=text id=api-key-input placeholder=AIza... style=width100%; padding12px; border-radius8px; bordernone; box-sizingborder-box; font-size14px; background#fff; color#000;
+    div
+    div style=displayflex; flex-directioncolumn; gap10px;
+        button class=btn btn-outline onclick=selectUser('小緁')🪄 魔法師：小緁button
+        button class=btn btn-outline onclick=selectUser('小鈞')🪄 魔法師：小鈞button
+        button class=btn btn-outline style=border-colorvar(--m-gold); colorvar(--m-gold)!important; onclick=selectUser('小凱')🛠️ 測試帳號：小凱 (2題)button
+    div
+div
+
+!-- 2. 圖鑑 --
+div id=page-home class=page
+    div style=displayflex; justify-contentspace-between; align-itemscenter;
+        h3🧚 span id=display-userspan的精靈圖鑑h3
+        button onclick=location.reload()登出button
+    div
+    div class=energy-bar⚡ 今日領獎餘額：span id=daily-energy3  3span &nbsp;｜&nbsp; 🧚 已收服：span id=owned-count0span  50div
+
+    !-- 篩選標籤 --
+    div style=displayflex; gap8px; margin-bottom8px;
+        button id=tab-all onclick=setTab('all') style=flex1; padding8px; border-radius10px; border2px solid var(--m-gold); backgroundvar(--m-gold); colorblack; font-weightbold; cursorpointer; font-size13px;全部button
+        button id=tab-owned onclick=setTab('owned') style=flex1; padding8px; border-radius10px; border2px solid var(--m-gold); backgroundtransparent; colorvar(--m-gold); font-weightbold; cursorpointer; font-size13px;已收藏button
+        button id=tab-missing onclick=setTab('missing') style=flex1; padding8px; border-radius10px; border2px solid rgba(255,255,255,0.3); backgroundtransparent; colorrgba(255,255,255,0.6); font-weightbold; cursorpointer; font-size13px;未收服button
+    div
+
+    div id=tome-grid class=tome-griddiv
+    div style=margin-top15px;button id=start-btn class=btn btn-gold onclick=window.showPage('page-mode-select')⚔️ 開始挑戰buttondiv
+div
+
+!-- 3. 模式選擇 --
+div id=page-mode-select class=page
+    h2 style=text-aligncenter; colorvar(--m-gold);選擇模式h2
+    div class=btn btn-gold style=padding40px; onclick=startGame('dictation')🎧 聽寫測驗div
+    div class=btn btn-gold style=padding40px; margin-top20px; onclick=startGame('copying')✍️ 照抄測驗div
+    button class=btn btn-outline style=margin-topauto; onclick=showPage('page-home')返回button
+div
+
+!-- 4. 作答拍照（每題拍一張，不送 AI）--
+div id=page-collect class=page
+    div style=displayflex; justify-contentspace-between; align-itemscenter;
+        span id=progress-label style=font-size16px; font-weightbold;試煉 1  10span
+        button onclick=stopCameraAndHome()✕button
+    div
+
+    div class=magic-card style=margin-top10px;
+        div id=ui-dictation style=displaynone; text-aligncenter;
+            div style=font-size70px; cursorpointer; onclick=window.speakCurrentWord()🔊div
+            p style=font-size13px; color#888; margin5px 0 0;點擊喇叭聆聽，在紙上寫好後拍照p
+        div
+        div id=ui-copying style=displaynone;
+            div id=target-word class=word-display...div
+            p style=font-size13px; color#888; margin5px 0 0;照抄到紙上後拍照p
+        div
+    div
+
+    div class=camera-container
+        video id=video autoplay playsinlinevideo
+        div class=viewfinderdiv
+        div id=flash class=flashdiv
+    div
+
+    div style=font-size12px; colorrgba(255,255,255,0.45); margin-bottom4px;已拍紀錄（點擊可放大）：div
+    div id=thumb-strip class=thumb-stripdiv
+
+    button id=capture-btn class=btn btn-gold style=margin-top10px; onclick=capturePhoto()📸 拍照確認此題button
+div
+
+!-- 5. 鑑定結果頁 --
+div id=page-review class=page
+    h2 style=text-aligncenter; colorvar(--m-gold); margin0 0 5px;📋 鑑定報告h2
+    p id=review-summary style=text-aligncenter; font-size14px; colorrgba(255,255,255,0.65); margin0 0 12px;p
+    div id=result-list class=result-listdiv
+    button class=btn btn-gold style=margin-top10px; onclick=goToTreasure()🎁 前往藏寶室button
+div
+
+!-- 6. 寶箱 --
+div id=page-treasure class=page
+    h2 style=text-aligncenter; colorvar(--m-gold);🎁 藏寶室h2
+    div id=chest-zone style=displayflex; justify-contentspace-around; margin-top40px;
+        div class=chest style=font-size60px; cursorpointer; onclick=openChest(this)📦div
+        div class=chest style=font-size60px; cursorpointer; onclick=openChest(this)📦div
+        div class=chest style=font-size60px; cursorpointer; onclick=openChest(this)📦div
+    div
+    div id=prize-reveal style=displaynone; text-aligncenter; margin-top20px;
+        div id=prize-sprite style=font-size80px; animation float 2s infinite; filter drop-shadow(0 0 15px gold);div
+        h1 id=prize-name style=colorvar(--m-gold);...h1
+        p id=prize-type style=colorrgba(255,255,255,0.6); margin0 0 15px;p
+        button class=btn btn-gold onclick=location.reload()領取成功button
+    div
+div
+
+canvas id=proc-canvas style=displaynone;canvas
+
+script
+    const defaultSpells = [
+        {n火焰小妖,t火系,e🔥},{n冰雪精靈,t冰系,e❄️},{n雷電小精,t雷系,e⚡},{n風語者,t風系,e🌪️},{n土地守護,t土系,e🪨},
+        {n星光仙子,t光系,e⭐},{n月影幽靈,t暗系,e🌙},{n水晶蝶精,t冰系,e🦋},{n森林小鬼,t自然,e🌿},{n花仙子,t自然,e🌸},
+        {n彩虹精靈,t光系,e🌈},{n雲朵小妖,t風系,e☁️},{n火山小怪,t火系,e🌋},{n海洋仙靈,t水系,e🌊},{n沙漠精怪,t土系,e🏜️},
+        {n夜星小精,t暗系,e🌟},{n蘑菇小妖,t自然,e🍄},{n南瓜精靈,t自然,e🎃},{n雪花小仙,t冰系,e🌨️},{n太陽精靈,t火系,e☀️},
+        {n紫晶守衛,t光系,e💜},{n翠玉小精,t自然,e💚},{n紅寶仙子,t火系,e❤️},{n藍鑽精靈,t冰系,e💙},{n金砂小怪,t土系,e✨},
+        {n龍爪幼靈,t龍系,e🐉},{n鳳凰小精,t火系,e🦅},{n獨角獸精,t光系,e🦄},{n飛馬小妖,t風系,e🐎},{n貓眼精靈,t暗系,e🐱},
+        {n蛙雨小精,t水系,e🐸},{n蝸牛幽靈,t自然,e🐌},{n蜜蜂小妖,t自然,e🐝},{n蝴蝶精靈,t風系,e🪽},{n螢火幼靈,t光系,e🪲},
+        {n蘑雲小鬼,t暗系,e👾},{n泡泡精靈,t水系,e🫧},{n音符小妖,t光系,e🎵},{n魔方精怪,t暗系,e🔮},{n彗星小仙,t光系,e☄️},
+        {n苔蘚守護,t自然,e🌱},{n迷霧幽靈,t暗系,e👻},{n閃光小精,t雷系,e💫},{n熔岩守衛,t火系,e🫠},{n冰霜精靈,t冰系,e🧊},
+        {n颶風小怪,t風系,e🌀},{n石英幼靈,t土系,e💎},{n河川小仙,t水系,e💧},{n黎明精靈,t光系,e🌅},{n黃昏小妖,t暗系,e🌆}
+    ];
+    const officialWords = {
+        小鈞[青蛙,水井裡,一隻,除了,睡覺,吃東西,拍著,肚子,說大話,唉,一窪,幾天,世界,連忙,裝不下],
+        小緁[安排,介紹,其中,賣帽子,戴著,蛋糕,扶著,休息,猴子,拿,一會兒,精采,希望,讀],
+        小凱[測試,成功]
+    };
+
+    let currentUser=, currentMode=, mySpells=[], usedWords=[], challenges=[];
+    let currentIdx=0, maxChallenges=10, stream=null, chestLocked=false, score=0;
+    let capturedPhotos = [];  存每題照片 dataURL
+
+    window.onload = () = {
+        if (localStorage.getItem('gemini_api_key_v2'))
+            document.getElementById('api-key-input').value = localStorage.getItem('gemini_api_key_v2');
+    };
+
+    window.selectUser = name = {
+        const key = document.getElementById('api-key-input').value.trim();
+        if (!key.startsWith(AIza)) return alert(請輸入正確金鑰);
+        localStorage.setItem('gemini_api_key_v2', key);
+        currentUser = name;
+        maxChallenges = (name === '小凱')  2  10;
+        document.getElementById('display-user').innerText = name;
+        mySpells = JSON.parse(localStorage.getItem('m_mine_' + currentUser))  [];
+        usedWords = JSON.parse(localStorage.getItem('m_used_' + currentUser))  [];
+        showPage('page-home');
+    };
+
+    window.showPage = id = {
+        document.querySelectorAll('.page').forEach(p = p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        if (id === 'page-home') renderHome();
+    };
+
+    let currentTab = 'all';
+
+    window.setTab = (tab) = {
+        currentTab = tab;
+        const tabs = { all '#tab-all', owned '#tab-owned', missing '#tab-missing' };
+        Object.entries(tabs).forEach(([key, sel]) = {
+            const el = document.querySelector(sel);
+            if (key === tab) {
+                el.style.background = 'var(--m-gold)'; el.style.color = 'black';
+                el.style.borderColor = 'var(--m-gold)';
+            } else {
+                el.style.background = 'transparent';
+                el.style.color = key === 'owned'  'var(--m-gold)'  'rgba(255,255,255,0.6)';
+                el.style.borderColor = key === 'owned'  'var(--m-gold)'  'rgba(255,255,255,0.3)';
+            }
+        });
+        renderHome();
+    };
+
+    window.renderHome = () = {
+        const grid = document.getElementById('tome-grid'); grid.innerHTML = '';
+        const ownedCount = defaultSpells.filter(s = mySpells.some(m = m.n === s.n)).length;
+        document.getElementById('owned-count').innerText = ownedCount;
+
+        const list = defaultSpells.filter(s = {
+            const has = mySpells.some(m = m.n === s.n);
+            if (currentTab === 'owned') return has;
+            if (currentTab === 'missing') return !has;
+            return true;
+        });
+
+        if (list.length === 0) {
+            grid.innerHTML = `div style=grid-column1-1; text-aligncenter; colorrgba(255,255,255,0.4); padding40px 0; font-size14px;
+                ${currentTab === 'owned'  '還沒有收服任何精靈，快去挑戰吧！🧚'  '太厲害了！50隻精靈全部收服！🎉'}
+            div`;
+        } else {
+            list.forEach(s = {
+                const has = mySpells.some(m = m.n === s.n);
+                const div = document.createElement('div');
+                div.className = 'sprite-icon' + (has  ' owned'  '');
+                div.style.opacity = has  1  0.25;
+                div.innerHTML = `span class=sprite-emoji${has  s.e  '❓'}spanspan class=sprite-name${has  s.n  ''}span`;
+                if (has) {
+                    div.title = `${s.n}｜${s.t}系`;
+                    div.style.cursor = 'pointer';
+                    div.onclick = () = showSpriteDetail(s);
+                }
+                grid.appendChild(div);
+            });
+        }
+
+        const stats = getDailyStats();
+        document.getElementById('daily-energy').innerText = (3 - stats.count) +   3;
+        document.getElementById('start-btn').disabled = (stats.count = 3);
+    };
+
+    window.showSpriteDetail = (s) = {
+        const modal = document.createElement('div');
+        modal.style.cssText = 'positionfixed;top0;left0;width100%;height100%;backgroundrgba(0,0,0,0.85);z-index9000;displayflex;align-itemscenter;justify-contentcenter;';
+        modal.innerHTML = `
+            div style=backgroundvar(--m-deep);border2px solid var(--m-gold);border-radius20px;padding40px 30px;text-aligncenter;max-width280px;width90%;
+                div style=font-size80px;animationfloat 2s infinite;${s.e}div
+                h2 style=colorvar(--m-gold);margin10px 0 5px;${s.n}h2
+                div style=backgroundrgba(255,215,0,0.15);border-radius10px;padding8px 16px;displayinline-block;margin-bottom20px;
+                    span style=colorrgba(255,255,255,0.7);font-size13px;屬性span
+                    span style=colorvar(--m-gold);font-weightbold;margin-left8px;${s.t}系span
+                div
+                br
+                button onclick=this.closest('div[style]').remove() style=padding12px 30px;border-radius12px;border2px solid var(--m-gold);backgroundtransparent;colorvar(--m-gold);font-size16px;font-weightbold;cursorpointer;關閉button
+            div
+        `;
+        modal.onclick = (e) = { if (e.target === modal) modal.remove(); };
+        document.body.appendChild(modal);
+    };
+
+    window.startGame = mode = {
+        currentMode = mode;
+        let pool = officialWords[currentUser]  [];
+        let avail = pool.filter(w = !usedWords.includes(w));
+        if (avail.length  maxChallenges) { usedWords = []; avail = pool; }
+        challenges = avail.sort(() = 0.5 - Math.random()).slice(0, maxChallenges);
+        usedWords = [...usedWords, ...challenges];
+        localStorage.setItem('m_used_' + currentUser, JSON.stringify(usedWords));
+        currentIdx = 0; score = 0;
+        capturedPhotos = new Array(maxChallenges).fill(null);
+        document.getElementById('thumb-strip').innerHTML = '';
+        showPage('page-collect');
+        startCamera();
+        updateUI();
+    };
+
+    async function startCamera() {
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({ video { facingMode environment, width { ideal 1280 } } });
+            document.getElementById('video').srcObject = stream;
+        } catch (e) { alert(相機失敗： + e.message); }
+    }
+
+     ---- 拍照：存在記憶體，不送 API ----
+    window.capturePhoto = function() {
+        const v = document.getElementById('video');
+        const c = document.getElementById('proc-canvas');
+        const ctx = c.getContext('2d');
+
+         座標換算（object-fit cover）
+        const vw = v.videoWidth, vh = v.videoHeight;
+        const displayW = v.clientWidth, displayH = v.clientHeight;
+        const scale = Math.max(vw  displayW, vh  displayH);
+        const vfW_disp = displayW  0.85, vfH_disp = 120;
+        const vfX_disp = (displayW - vfW_disp)  2;
+        const vfY_disp = (displayH - vfH_disp)  2;
+        const offsetX = (vw - displayW  scale)  2;
+        const offsetY = (vh - displayH  scale)  2;
+
+        c.width = 900; c.height = 300;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 900, 300);
+        ctx.drawImage(v,
+            offsetX + vfX_disp  scale,
+            offsetY + vfY_disp  scale,
+            vfW_disp  scale,
+            vfH_disp  scale,
+            0, 0, 900, 300
+        );
+        const dataUrl = c.toDataURL('imagejpeg', 0.85);
+
+         閃光
+        const flash = document.getElementById('flash');
+        flash.style.opacity = '1';
+        setTimeout(() = { flash.style.opacity = '0'; }, 120);
+
+         存照片
+        capturedPhotos[currentIdx] = dataUrl;
+
+         加縮圖
+        const strip = document.getElementById('thumb-strip');
+        let img = document.getElementById('thumb-' + currentIdx);
+        if (!img) {
+            img = document.createElement('img');
+            img.id = 'thumb-' + currentIdx;
+            strip.appendChild(img);
+        }
+        img.src = dataUrl;
+        img.className = 'captured';
+        img.title = challenges[currentIdx];
+        img.onclick = () = { document.getElementById('zoom-img').src = dataUrl; document.getElementById('zoom-modal').style.display = 'flex'; };
+
+         下一題 or 完成
+        if (currentIdx  maxChallenges - 1) {
+            currentIdx++;
+            updateUI();
+        } else {
+             全部拍完 → 停相機 → 送 AI
+            stopCamera();
+            runAIJudge();
+        }
+    };
+
+     ---- 一次送全部照片給 AI（只消耗 1 次 API）----
+    async function runAIJudge() {
+        const key = localStorage.getItem('gemini_api_key_v2');
+        const n = capturedPhotos.length;
+        document.getElementById('loader-text').innerText = `🔍 Gemini 正在鑑定 ${n} 張照片，請稍候...`;
+        document.getElementById('loader').style.display = 'flex';
+
+        try {
+             組合 parts：說明 + 每題（文字標題 + 圖片）
+            const parts = [];
+            parts.push({ text
+                `你是繁體中文手寫辨識專家。以下共 ${n} 道題，每題有目標字與一張手寫照片。n` +
+                `請依序判斷每張照片的手寫字是否符合目標字（允許潦草）。n` +
+                `只回傳 JSON 陣列，格式：[{correcttrue},{correctfalse},...]n不要任何其他說明或 markdown。`
+            });
+
+            capturedPhotos.forEach((dataUrl, i) = {
+                parts.push({ text `n第 ${i + 1} 題，目標字：「${challenges[i]}」` });
+                parts.push({ inline_data { mime_type imagejpeg, data dataUrl.split(',')[1] } });
+            });
+
+            const url = `httpsgenerativelanguage.googleapis.comv1betamodelsgemini-2.5-flash-litegenerateContentkey=${key}`;
+            const res = await fetch(url, {
+                method POST,
+                headers { Content-Type applicationjson },
+                body JSON.stringify({ contents [{ parts }] })
+            });
+            const json = await res.json();
+            if (json.error) throw new Error(json.error.message);
+
+            let txt = json.candidates[0].content.parts[0].text.trim();
+            txt = txt.replace(```json```g, '').trim();
+            const results = JSON.parse(txt);
+
+            document.getElementById('loader').style.display = 'none';
+            showReview(results);
+
+        } catch (e) {
+            document.getElementById('loader').style.display = 'none';
+            alert(AI 鑑定失敗： + e.message + nn將改為人工確認模式。);
+            showReviewManual();
+        }
+    }
+
+     ---- 顯示 AI 鑑定結果 ----
+    function showReview(results) {
+        score = 0;
+        const list = document.getElementById('result-list');
+        list.innerHTML = '';
+
+        results.forEach((r, i) = {
+            const correct = r.correct === true;
+            if (correct) score++;
+            const row = document.createElement('div');
+            row.className = 'result-row';
+            row.dataset.correct = correct  '1'  '0';
+            row.style.borderLeftColor = correct  'var(--m-gold)'  'var(--m-red)';
+            row.innerHTML = `
+                img src=${capturedPhotos[i]} onclick=openZoom('${capturedPhotos[i]}')
+                span class=rword${challenges[i]}span
+                span class=verdict${correct  '✅'  '❌'}span
+                ${!correct  `button class=manual-btn onclick=manualPass(${i},this)🙋 人工通過button`  ''}
+            `;
+            list.appendChild(row);
+        });
+
+        updateReviewSummary();
+        showPage('page-review');
+    }
+
+     ---- 人工確認模式（AI 失敗時）----
+    function showReviewManual() {
+        score = 0;
+        const list = document.getElementById('result-list');
+        list.innerHTML = '';
+
+        capturedPhotos.forEach((photo, i) = {
+            const row = document.createElement('div');
+            row.className = 'result-row';
+            row.id = `row-${i}`;
+            row.dataset.correct = '0';
+            row.innerHTML = `
+                img src=${photo} onclick=openZoom('${photo}')
+                span class=rword${challenges[i]}span
+                button class=manual-btn style=border-color#4CAF50; color#4CAF50; onclick=manualPass(${i},this)✅ 通過button
+                button class=manual-btn style=border-colorvar(--m-red); colorvar(--m-red); onclick=manualFail(${i},this)❌ 不過button
+            `;
+            list.appendChild(row);
+        });
+
+        document.getElementById('review-summary').innerText = '請家長逐題確認';
+        showPage('page-review');
+    }
+
+    window.manualPass = (idx, btn) = {
+        const row = btn.closest('.result-row');
+        if (row.dataset.correct === '0') { score++; row.dataset.correct = '1'; }
+        row.style.borderLeftColor = 'var(--m-gold)';
+        row.querySelectorAll('.manual-btn').forEach(b = b.remove());
+         若原本有 ❌ 換成 ✅
+        const v = row.querySelector('.verdict');
+        if (v) v.innerText = '✅';
+        else row.innerHTML += `span class=verdict✅span`;
+        updateReviewSummary();
+    };
+
+    window.manualFail = (idx, btn) = {
+        const row = btn.closest('.result-row');
+        row.dataset.correct = '0';
+        row.style.borderLeftColor = 'var(--m-red)';
+        row.querySelectorAll('.manual-btn').forEach(b = b.remove());
+        const v = row.querySelector('.verdict');
+        if (v) v.innerText = '❌';
+        else row.innerHTML += `span class=verdict❌span`;
+        updateReviewSummary();
+    };
+
+    function updateReviewSummary() {
+        const pct = Math.round(score  maxChallenges  100);
+        document.getElementById('review-summary').innerText = `${score}  ${maxChallenges} 正確（${pct}%）`;
+    }
+
+    window.goToTreasure = () = {
+        chestLocked = false;
+        document.getElementById('chest-zone').style.display = 'flex';
+        document.getElementById('prize-reveal').style.display = 'none';
+        showPage('page-treasure');
+    };
+
+    function updateUI() {
+        document.getElementById('progress-label').innerText = `試煉 ${currentIdx + 1}  ${maxChallenges}`;
+        document.getElementById('target-word').innerText = challenges[currentIdx];
+        document.getElementById('ui-dictation').style.display = (currentMode === 'dictation'  'block'  'none');
+        document.getElementById('ui-copying').style.display = (currentMode === 'copying'  'block'  'none');
+        if (currentMode === 'dictation') setTimeout(() = window.speakWord(challenges[currentIdx]), 400);
+    }
+
+    function stopCamera() { if (stream) { stream.getTracks().forEach(t = t.stop()); stream = null; } }
+    function stopCameraAndHome() { stopCamera(); showPage('page-home'); }
+
+    function getDailyStats() {
+        const today = new Date().toLocaleDateString();
+        const key = 'm_daily_' + currentUser;
+        let s = JSON.parse(localStorage.getItem(key))  { date today, count 0 };
+        if (s.date !== today) s = { date today, count 0 };
+        return s;
+    }
+
+    window.speakWord = t = { const m = new SpeechSynthesisUtterance(t); m.lang = 'zh-TW'; speechSynthesis.speak(m); };
+    window.speakCurrentWord = () = window.speakWord(challenges[currentIdx]);
+    window.openZoom = s = { document.getElementById('zoom-img').src = s; document.getElementById('zoom-modal').style.display = 'flex'; };
+
+    window.openChest = el = {
+        if (chestLocked) return; chestLocked = true;
+        const stats = getDailyStats();
+        el.innerText = '🎊';
+        setTimeout(() = {
+            document.getElementById('chest-zone').style.display = 'none';
+            document.getElementById('prize-reveal').style.display = 'block';
+            if (score = maxChallenges  0.8) {
+                 從還沒收集的精靈中隨機選
+                const unowned = defaultSpells.filter(s = !mySpells.some(m = m.n === s.n));
+                const pool = unowned.length  0  unowned  defaultSpells;
+                const prize = pool[Math.floor(Math.random()  pool.length)];
+                const isNew = !mySpells.some(m = m.n === prize.n);
+                if (isNew) {
+                    mySpells.push(prize);
+                    localStorage.setItem('m_mine_' + currentUser, JSON.stringify(mySpells));
+                }
+                stats.count++;
+                localStorage.setItem('m_daily_' + currentUser, JSON.stringify(stats));
+                confetti({ particleCount 120, spread 80, colors ['#FFD700','#FF69B4','#00BFFF','#7FFF00'] });
+                document.getElementById('prize-sprite').innerText = prize.e;
+                document.getElementById('prize-name').innerText = (isNew  '🆕 新精靈！'  '✨ 已收藏') + '「' + prize.n + '」';
+                document.getElementById('prize-type').innerText = '屬性：' + prize.t + '系';
+            } else {
+                document.getElementById('prize-sprite').innerText = '😢';
+                document.getElementById('prize-name').innerText = 修煉不足;
+                document.getElementById('prize-type').innerText = '答對 80% 才能收服精靈喔！';
+            }
+        }, 800);
+    };
+script
+body
+html
